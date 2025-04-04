@@ -1,0 +1,117 @@
+
+
+.wrapper {
+    width: 100%;
+    max-width: 1000px;
+    padding: 10px;
+}
+
+.content {
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+
+}
+
+
+.message-box {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    background-color: #f4f4f4;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.message-box img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.message-box input {
+    flex: 3;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+
+.upload-icon {
+    cursor: pointer;
+    font-size: 20px;
+    margin-left: 10px;
+}
+
+.locker-btn {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    background-color: #009ddc;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.locker-btn:hover {
+    background-color: #007bb5;
+}
+
+/*Pour les posts*/
+
+/* Espacement entre chaque post */
+
+.post {
+    margin-bottom: 20px; /* Espacement entre les posts */
+    padding-bottom: 20px; /* Espacement intérieur pour le bas */
+    border-bottom: 1px solid #ddd; /* Ligne grise légère entre les posts */
+}
+
+.post-info {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Espacement entre le nom et l'heure */
+}
+
+.post-time {
+    font-size: 0.9em;
+    color: gray;
+}
+
+/* Pour que chaque post soit bien aligné */
+.post-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+/* Taille et espacement de la photo de profil */
+.post-profile-pic {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+
+
+
+.post p {
+    margin-top: 5px;
+    text-align: center;
+}
+
+
+/* Affichage de l'image dans un post */
+.post-image {
+    width: 20%;
+    max-height: 200px;
+    object-fit: cover;
+    align-content: center;
+    align-items: center;
+    margin-left: 40%;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
