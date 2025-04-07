@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Carbon\Carbon; // Ajoute Carbon pour gérer les dates
 
+//Cette classe a été réalisé avec l'aide d'élèves en RA, de ChatGPT ainsi que de la doc officielle de l'API : https://docs.football-data.org/general/v4/resources.html
 class ResultController
 {
     private $API_KEY = "8eaacd5855b24ed7912efae86b06cb3c";

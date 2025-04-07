@@ -40,4 +40,20 @@ class PostController extends Controller
         $posts = Post::with('user')->orderBy('created_at', 'desc')->get();
         return view('dashboard', compact('posts'));
     }
+
+    public function deletePost(Post $post)
+    {
+        // On vérifie que le post appartient bien à l'utilisateur connecté
+        if ($post->user_id !== auth()->id()) {
+            return back()->with('error', 'Action non autorisée.');
+        }
+
+        // TODO On supprime l'image si elle existe
+
+
+        $post->delete();
+
+        return back()->with('success', 'Le post a été supprimé avec succès.');
+    }
+
 }

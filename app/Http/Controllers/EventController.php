@@ -26,7 +26,7 @@ class EventController
             $event->place_prises = $event->users->count();
         }
 
-        return view('showEvent', compact('events'));
+        return view('blueevent', compact('events'));
     }
 
     public function joinEvent(Event $event)
@@ -43,7 +43,7 @@ class EventController
         }
 
         // Vérifier s'il reste des places
-        $placesRestantes = $event->max_participants - $event->users()->count();
+        $placesRestantes = $event->max_participants - $event->users()->count(); //On prend le max et on soustrait au nb d'inscrit trouvé dans la table
         if ($placesRestantes <= 0) {
             return back()->with('error', 'Plus de places disponibles pour cet événement.');
         }
@@ -53,6 +53,20 @@ class EventController
 
         return back()->with('success', 'Vous avez rejoint l’événement avec succès.');
     }
+
+    public function leaveEvent(Event $event)
+    {
+        $user = auth()->user();
+
+        if (!$event->users->contains($user->id)) {
+            return back()->with('error', 'Vous n\'êtes pas inscrit à cet événement.');
+        }
+
+        $event->users()->detach($user->id);
+
+        return back()->with('success', 'Vous avez quitté l\'événement.');
+    }
+
 
     public function myEvents()
     {

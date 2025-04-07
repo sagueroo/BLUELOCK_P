@@ -1,0 +1,87 @@
+.user-list {
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.user-row {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    width: 100%;
+    border: none;
+    background: none;
+    text-align: left;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.user-row.even {
+    background-color: #f9f9f9;
+}
+
+.user-row.odd {
+    background-color: #e0e0e0;
+}
+
+.user-row:hover {
+    background-color: #d1d1d1;
+}
+
+.profile-pic {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 15px;
+    object-fit: cover;
+    border: 2px solid #ccc;
+}
+
+.user-info {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* Popup */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 15% auto;
+    padding: 20px;
+    border-radius: 8px;
+    width: 80%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.modal button {
+    padding: 8px 12px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    color: white;
+}
+
+.confirm {
+    background-color: red;
+
+}
+
+.cancel {
+    background-color: gray;
+    color: white;
+}

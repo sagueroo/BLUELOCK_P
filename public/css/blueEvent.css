@@ -1,0 +1,131 @@
+/* Liens de navigation */
+.nav-links {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin: 30px 0;
+}
+
+.nav-link {
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 600;
+    color: #2980b9;
+    padding: 10px 20px;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    background-color: #eaf4ff;
+}
+
+.nav-link:hover {
+    background-color: #cfe8ff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* Section événements */
+.event-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Filtres */
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+}
+
+.btn {
+    background-color: #2980b9;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #1f6692;
+}
+
+/* Cartes événement */
+.event-card {
+    background-color: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.05);
+    padding: 30px;
+    margin-bottom: 25px;
+    text-align: left;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.event-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+}
+
+/* Titre événement */
+.event-card h2 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #34495e;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+/* Infos texte */
+.event-card p {
+    margin: 8px 0;
+    color: #555;
+    font-size: 15px;
+}
+
+.event-card strong {
+    color: #333;
+    font-weight: 600;
+}
+
+/* Boutons "Join" / "Leave" */
+.join-btn {
+    background-color: #009ddc;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s ease;
+    font-weight: 600;
+    width: 100%;
+    margin-top: 15px;
+    text-align: center;
+}
+
+.join-btn:hover {
+    background-color: #007cb2;
+}
+
+.joined {
+    background-color: white;
+    color: #009ddc;
+    border: 2px solid #009ddc;
+}
+
+.joined:hover {
+    background-color: #f0faff;
+}
+
+/* Créateur */
+.event-creator {
+    margin-top: 15px;
+    font-size: 14px;
+    color: #777;
+    text-align: right;
+}
+

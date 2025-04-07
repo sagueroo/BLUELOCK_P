@@ -3,7 +3,7 @@
 <style>
     .social-btn {
         background-color: #e0e5f1;
-        color: #333;
+        color: #fff;
         border: none;
         padding: 12px;
         font-size: 16px;
@@ -12,4 +12,6 @@
         margin-bottom: 10px;
         width: 100%;
     }
+
+
 </style>

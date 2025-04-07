@@ -1,5 +1,5 @@
 <x-app-layout>
-    <link rel="stylesheet" href="{{ asset('css/showSport.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/blueSport.css') }}">
     <h1>CHOOSE YOUR SPORT</h1>
     <div class="main">
     @foreach($sports as $sport)

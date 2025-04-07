@@ -1,7 +1,7 @@
 <x-app-layout>
-    <link rel="stylesheet" href="{{ asset('css/showEvent.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/blueEvent.css') }}">
     <div class="nav-links">
-        <a href="{{ route('showEvent') }}" class="nav-link">Event</a>
+        <a href="{{ route('blueevent') }}" class="nav-link">Event</a>
         <a href="{{ route('myEvents') }}" class="nav-link">MyEvent</a>
     </div>
 

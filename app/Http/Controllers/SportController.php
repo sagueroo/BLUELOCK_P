@@ -23,7 +23,7 @@ class SportController extends Controller
             }
         }
 
-        return view('showSport', compact('sports'));
+        return view('bluesport', compact('sports'));
     }
 
 }

@@ -1,129 +1,136 @@
 <nav class="sidebar">
-    <x-bluelock-logo/>
+    <x-bluelock-logo class="sidebar-logo" />
+
     <ul class="menu">
         <li>
-            <a href="{{ route('dashboard') }}">
-                <img src="{{ asset('pictures/home.png') }}" alt="Home" class="w-6 h-6 inline mr-2"> BLUEHOME
+            <a href="{{ route('dashboard') }}" class="menu-item">
+                <img src="{{ asset('pictures/home.png') }}" alt="Home"> <span>Home</span>
             </a>
         </li>
         <li>
-            <a href="{{ route('showSport') }}">
-                <img src="{{ asset('pictures/football.png') }}" alt="Sport" class="w-6 h-6 inline mr-2"> BLUESPORT
+            <a href="{{ route('bluesport') }}" class="menu-item">
+                <img src="{{ asset('pictures/football.png') }}" alt="Sport"> <span>Sport</span>
             </a>
         </li>
         <li>
-            <a href="{{ route('showEvent') }}">
-                <img src="{{ asset('pictures/event.png') }}" alt="Events" class="w-6 h-6 inline mr-2"> BLUEVENT
+            <a href="{{ route('blueevent') }}" class="menu-item">
+                <img src="{{ asset('pictures/event.png') }}" alt="Events"> <span>Events</span>
             </a>
         </li>
         <li>
-            <a href="#blueteam">
-                <img src="{{ asset('pictures/team.png') }}" alt="Team" class="w-6 h-6 inline mr-2"> BLUETEAM
+            <a href="#blueteam" class="menu-item">
+                <img src="{{ asset('pictures/team.png') }}" alt="Team"> <span>Team</span>
             </a>
         </li>
         <li>
-            <a href="#bluelike">
-                <img src="{{ asset('pictures/heart.png') }}" alt="Like" class="w-6 h-6 inline mr-2"> BLUELIKE
+            <a href="#bluelike" class="menu-item">
+                <img src="{{ asset('pictures/heart.png') }}" alt="Like"> <span>Likes</span>
             </a>
         </li>
         <li>
-            <a href="{{ route('blueresult') }}">
-                <img src="{{ asset('pictures/message.png') }}" alt="Messages" class="w-6 h-6 inline mr-2"> BLUERESULT
+            <a href="{{ route('blueresult') }}" class="menu-item">
+                <img src="{{ asset('pictures/result.png') }}" alt="Results"> <span>Results</span>
             </a>
         </li>
         <li>
-            <a href="{{ route('profile.edit') }}">
-                <img src="{{ asset('pictures/setting.png') }}" alt="Settings" class="w-6 h-6 inline mr-2"> BLUESET
+            <a href="{{ route('profile.edit') }}" class="menu-item">
+                <img src="{{ asset('pictures/setting.png') }}" alt="Settings"> <span>Settings</span>
             </a>
         </li>
-
-        <li class="profile">
+        <li class="menu-item profile">
             <a href="{{ route('account.show') }}">
-                <img src="{{ Auth::user()->profile_photo_path ? asset('storage/' . Auth::user()->profile_photo_path) : asset('pictures/pop.png') }}"
-                     alt="Photo de profil"
-                     class="nav-profile-pic">
-                {{ Auth::user()->name }}
+                <img src="{{ Auth::user()->profile_photo_path ? asset('storage/' . Auth::user()->profile_photo_path) : asset('pictures/pop.png') }}" class="nav-profile-pic" alt="Profile">
+                <span>{{ Auth::user()->name }}</span>
             </a>
         </li>
     </ul>
+
     <button class="locker-btn1">LOCKER</button>
 </nav>
+
 <style>
-    /* Sidebar générale */
     .sidebar {
         position: fixed;
-        top: -65px; /* Ajuster selon la hauteur de la navbar */
+        top: 0;
         left: 0;
-        background-color: #e0e5f1;
-        padding: 20px;
-        width: 210px;
+        width: 230px;
+        height: 100vh;
+        background: #f6f9fc;
+        border-right: 1px solid #dbe2ef;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        height: 109vh;
-        box-shadow: 5px 0 10px rgba(0, 0, 0, 0.1);
-
+        padding: 25px 20px;
+        box-shadow: 4px 0 15px rgba(0, 0, 0, 0.05);
+        font-family: 'Segoe UI', sans-serif;
     }
 
-    /* Logo */
-    .sidebar .logo img {
-        width: 100%;
-        margin-bottom: -110px;
+    .sidebar-logo {
+        margin-bottom: 30px;
+        text-align: center;
     }
 
-    /* Menu de la sidebar */
-    .sidebar ul {
+    .menu {
         list-style: none;
-        padding-bottom: 10px;
-        padding-left: 0px;
+        padding: 0;
+        margin: 0;
+        flex-grow: 1;
     }
 
-    .sidebar ul li {
-        margin: 15px 0;
-    }
-
-    .sidebar ul li a {
-        text-decoration: none;
-        color: #2d2d2d;
-        font-weight: bold;
+    .menu-item {
         display: flex;
         align-items: center;
-        padding: 10px;
-        border-radius: 5px;
-        transition: background-color 0.3s ease;
+        gap: 15px;
+        padding: 12px 15px;
+        margin-bottom: 10px;
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: 500;
+        color: #1e1e2f;
+        border-radius: 12px;
+        transition: all 0.25s ease-in-out;
     }
 
-    .sidebar ul li a:hover {
-        background-color: #d6dce8;
+    .menu-item:hover {
+        background: #e3ecfb;
+        color: #009ddc;
     }
 
-    /* Photo de profil dans la navbar */
-    .nav-profile-pic {
-        width: 40px;
-        height: 40px;
+    .menu-item img {
+        width: 24px;
+        height: 24px;
+    }
+
+    .menu-item span {
+        flex: 1;
+        white-space: nowrap;
+    }
+
+    /* Profil */
+    .menu-item.profile img {
+        width: 35px;
+        height: 35px;
         border-radius: 50%;
         object-fit: cover;
-        margin-right: 10px;
-        border: 2px solid #ddd;
+        border: 2px solid #ccc;
     }
 
-    /* Bouton LOCKER */
+    /* Bouton Locker */
     .locker-btn1 {
-        background-color: #009ddc;
-        color: #fff;
+        background: #009ddc;
+        color: white;
         border: none;
-        padding: 10px;
+        padding: 12px;
         font-size: 16px;
-        border-radius: 5px;
+        border-radius: 12px;
         cursor: pointer;
+        transition: 0.3s;
         width: 100%;
-        text-align: center;
-        transition: background-color 0.3s ease;
-        margin-bottom: 60px;
     }
 
     .locker-btn1:hover {
         background-color: #007bb5;
     }
+
 
 </style>

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BioProfileController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\FollowController;
@@ -31,17 +32,23 @@ Route::get('/dashboard', function () {
     return view('dashboard',compact('posts','sports'));
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+//------------------------Route Admin---------------------------
+//Source utilisé pour réaliser le middleware : https://www.youtube.com/watch?v=b-qEj11h7as&t=1225s
+Route::get('admin/dashboard',[AdminController::class,'dashboard'])->middleware(['auth','admin']);
+Route::delete('/admin/posts/{post}', [AdminController::class, 'deletePost'])->middleware(['auth', 'admin'])->name('deletePost');
 
 
 require __DIR__.'/auth.php';
 
-Route::get('admin/dashboard',[HomeController::class,'index'])->middleware(['auth','admin']);
+
 Route::get('/account', [AccountController::class, 'show'])->name('account.show');
 Route::get('/account/setting', [SettingController::class, 'show'])->name('setting.show');
 Route::post('/profile/updateBio', [BioProfilController::class, 'updateBio'])->name('profile.updateBio');
@@ -51,23 +58,26 @@ Route::delete('/profile/photo', [BioProfileController::class, 'deleteProfilePhot
 
 //Route::post('/follow/{user}', [FollowController::class, 'toggle'])->name('follow.toggle');
 
-//Pour les post
+//------------------------Route Post---------------------------
 Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
 Route::get('/', [PostController::class, 'index'])->name('home');
+Route::delete('/post/{post}', [PostController::class, 'deletePost'])->name('deletePost');
 
-//Pour voir et s'inscrire dans un sport
-Route::get('/bluesport', [SportController::class, 'showSport'])->name('showSport');
+//------------------------Route Sport---------------------------
+Route::get('/bluesport', [SportController::class, 'showSport'])->name('bluesport');
 Route::post('/bluesport/add-sport', [UsersSportsController::class, 'addSport'])->name('addSport');
 Route::post('/bluesport/delete-sport', [UsersSportsController::class, 'deleteSport'])->name('deleteSport');
 
-//Voir et rejoindre les evenements
+//------------------------Route Event---------------------------
 
-Route::get('/bluevent', [EventController::class, 'showEvent'])->name('showEvent');
+Route::get('/bluevent', [EventController::class, 'showEvent'])->name('blueevent');
 Route::get('/myEvents', [EventController::class, 'myEvents'])->name('myEvents');
 Route::get('/myEvents/{event}', [EventController::class, 'viewMore'])->name('viewMore');
 Route::post('/bluevent/{event}', [EventController::class, 'joinEvent'])->name('joinEvent');
-Route::delete('/removeUser/{user}', [EventController::class, 'removeUser'])->name('removeUser');
+Route::delete('/leaveEvent/{event}', [EventController::class, 'leaveEvent'])->name('leaveEvent');
+
+Route::delete('/removeUser/{event}/{user}', [EventController::class, 'removeUser'])->name('removeUser');
 
 
-//Resultats des matchs de foot
+//------------------------Route Result---------------------------
 Route::get('/blueresult', [ResultController::class, 'index'])->name('blueresult');
