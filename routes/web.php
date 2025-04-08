@@ -25,6 +25,9 @@ Route::get('/', function () {
 
 Route::get('/dashboard', function () {
     $user = Auth::user();
+    if (!$user) {
+        return view('auth/login');
+    }
     $userSports = $user->sports->pluck('id');
     // Récupère tous les posts
     $posts = Post::whereIn('sport_id', $userSports)->orderBy('created_at', 'desc')->get();

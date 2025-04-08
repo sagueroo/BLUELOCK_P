@@ -13,12 +13,12 @@ class EventController
         // Récupère l'utilisateur actuellement authentifié
         $user = auth()->user();
 
-        // Récupère les sports auxquels l'utilisateur est inscrit
-        $sportsUserIsSubscribedTo = $user->sports->pluck('id');  // Pluck pour récupérer uniquement les IDs des sports
+        // Récupère les sports auxquels l'utilisateur est inscrit (avec leurs informations complètes)
+        $sportsSubscribed = $user->sports;  // Retirer le pluck('id') pour récupérer les objets complets
 
         // Récupère les événements associés à ces sports et charge les relations sport et user
         $events = Event::with('sport', 'user')  // 'sport' pour récupérer le sport lié à l'événement, 'user' pour récupérer l'utilisateur qui a créé l'événement
-        ->whereIn('sport_id', $sportsUserIsSubscribedTo)  // Filtre par les sports auxquels l'utilisateur est inscrit
+        ->whereIn('sport_id', $sportsSubscribed->pluck('id'))  // Filtre par les sports auxquels l'utilisateur est inscrit
         ->get();
 
         // Calcul du nombre de places restantes pour chaque événement
@@ -26,8 +26,9 @@ class EventController
             $event->place_prises = $event->users->count();
         }
 
-        return view('blueevent', compact('events'));
+        return view('blueevent', compact('events', 'sportsSubscribed'));
     }
+
 
     public function joinEvent(Event $event)
     {
