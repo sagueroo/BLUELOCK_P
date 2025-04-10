@@ -11,6 +11,7 @@ use App\Http\Controllers\AccountController;
 use App\Http\Controllers\ResultController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\BioProfilController;
+use App\Http\Controllers\SearchController;
 
 use App\Http\Controllers\SportController;
 use App\Http\Controllers\UsersSportsController;
@@ -45,7 +46,7 @@ Route::middleware('auth')->group(function () {
 
 //------------------------Route Admin---------------------------
 //Source utilisé pour réaliser le middleware : https://www.youtube.com/watch?v=b-qEj11h7as&t=1225s
-Route::get('admin/dashboard',[AdminController::class,'dashboard'])->middleware(['auth','admin']);
+Route::get('admin/dashboard',[AdminController::class,'dashboard'])->middleware(['auth','admin'])->name('admin.dashboard');
 Route::delete('/admin/posts/{post}', [AdminController::class, 'deletePost'])->middleware(['auth', 'admin'])->name('deletePost');
 
 
@@ -84,3 +85,7 @@ Route::delete('/removeUser/{event}/{user}', [EventController::class, 'removeUser
 
 //------------------------Route Result---------------------------
 Route::get('/blueresult', [ResultController::class, 'index'])->name('blueresult');
+
+
+// web.php
+Route::get('/search', [SearchController::class, 'index'])->name('search');

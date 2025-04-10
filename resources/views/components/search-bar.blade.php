@@ -1,6 +1,6 @@
 <div class="search-bar">
-    <input type="text" placeholder="Rechercher..." class="search-input">
-    <button class="search-btn">🔍</button>
+    <input type="text" placeholder="Rechercher..." class="search-input" required>
+    <button type="submit" class="search-btn">🔍</button>
 </div>
 
 <style>

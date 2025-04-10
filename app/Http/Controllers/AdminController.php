@@ -16,9 +16,9 @@ class AdminController extends Controller
     {
         // TODO Optionnel : supprimer aussi l'image s'il y en a une
 
+        dd($post);
+        //$post->delete();
 
-        $post->delete();
-
-        return redirect()->route('admin.dashboard')->with('success', 'Post supprimé avec succès.');
+        //return redirect()->route('admin.dashboard')->with('success', 'Post supprimé avec succès.');
     }
 }

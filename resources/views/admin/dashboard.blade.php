@@ -29,9 +29,9 @@
                     <p>{{ $post->content }}</p>
 
                     <!-- Bouton de suppression visible pour l'admin -->
-                    <form action="{{ route('deletePost', $post->id) }}" method="POST" style="margin-top: 15px;">
+                    <form action="{{ route('deletePost', ['post' => $post->id]) }}" method="POST" style="margin-top: 15px;">
                         @csrf
-                        @method('DELETE')
+                        <input type="hidden" name="_method" value="DELETE">
                         <button type="submit" class="locker-btn" style="background-color: crimson;">
                             Delete
                         </button>

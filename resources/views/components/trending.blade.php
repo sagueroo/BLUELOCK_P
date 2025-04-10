@@ -1,5 +1,10 @@
 <aside class="trending">
-    <x-search-bar class="search-bar"/>
+    <form action="{{ route('search') }}" method="GET">
+        <input type="text" class="search-input" name="q" placeholder="Recherche..." required>
+        <button type="submit">🔍</button>
+    </form>
+
+
 
     <div class="section">
         <h3 class="section-title">TENDANCE</h3>
@@ -50,8 +55,32 @@
         font-family: 'Segoe UI', sans-serif;
     }
 
+    /* Barre de recherche */
     .search-bar {
-        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        background: white;
+        padding: 5px;
+        border-radius: 20px;
+        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+        margin-bottom: 15px;
+    }
+
+    .search-input {
+        border: none;
+        outline: none;
+        flex-grow: 1;
+        padding: 8px;
+        border-radius: 20px;
+        font-size: 14px;
+    }
+
+    .search-btn {
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-size: 18px;
+        padding: 5px;
     }
 
     .section-title {
