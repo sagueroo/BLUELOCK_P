@@ -11,7 +11,7 @@ use Laravel\Scout\Searchable;
 
 class User extends Authenticatable
 {
-    use Searchable;
+    //use Searchable;
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
 
@@ -61,16 +61,6 @@ class User extends Authenticatable
         return $this->belongsToMany(Event::class,'events_users');
     }
 
-    public function toSearchableArray(): array
-    {
-        // All model attributes are made searchable
-        $array = $this->toArray();
 
-        // Then we add some additional fields
-        $array['user_name'] = $this->name;
-
-
-        return $array;
-    }
 
 }

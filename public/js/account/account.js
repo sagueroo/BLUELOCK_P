@@ -1,8 +1,21 @@
 function confirmDeletePost(postId) {
-    document.getElementById('deletePostForm').action = `/post/${postId}`;
-    document.getElementById('confirmPostModal').style.display = 'block';
+    const modal = document.getElementById('confirmPostModal');
+    const form = document.getElementById('deletePostForm');
+
+    // Met à jour l'action du formulaire avec l'ID du post à supprimer
+    form.action = `/posts/${postId}`;
+    modal.style.display = 'block';
 }
 
 function closePostModal() {
-    document.getElementById('confirmPostModal').style.display = 'none';
+    const modal = document.getElementById('confirmPostModal');
+    modal.style.display = 'none';
+}
+
+// Fermer la modal si on clique en dehors
+window.onclick = function(event) {
+    const modal = document.getElementById('confirmPostModal');
+    if (event.target === modal) {
+        modal.style.display = 'none';
+    }
 }

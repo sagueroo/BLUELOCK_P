@@ -9,8 +9,8 @@
         <h2>The future is yours</h2>
         <a href="/register"><h1>Join us</h1></a>
         <p class="instructions">Sign up now.</p>
-        <x-social-button type="google">Google...</x-social-button>
-        <x-social-button type="apple">Apple...</x-social-button>
+        <x-social-button type="google"><a href="{{ route('auth.google') }}">
+                <button class="google-btn">Google...</button></a></x-social-button>
 
         <div class="divider">
             <hr><span>ou</span><hr>

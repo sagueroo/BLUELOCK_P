@@ -22,6 +22,10 @@
                             @csrf
                             <button type="submit" class="join-btn"> View More</button>
                         </form>
+                        <form action="{{ route('deleteEvent', $event->id) }}" method="GET">
+                            @csrf
+                            <button type="submit" class="delete-btn">Delete Event</button>
+                        </form>
                     </div>
 
                 @endforeach

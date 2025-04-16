@@ -53,9 +53,11 @@ Route::delete('/admin/posts/{post}', [AdminController::class, 'deletePost'])->mi
 require __DIR__.'/auth.php';
 
 
-Route::get('/account', [AccountController::class, 'show'])->name('account.show');
+Route::get('/account/{id?}', [AccountController::class, 'show'])->name('account.show');
 Route::get('/account/setting', [SettingController::class, 'show'])->name('setting.show');
 Route::post('/profile/updateBio', [BioProfilController::class, 'updateBio'])->name('profile.updateBio');
+Route::post('/account/{id}/follow', [AccountController::class, 'follow'])->name('account.follow');
+Route::post('/account/{id}/unfollow', [AccountController::class, 'unfollow'])->name('account.unfollow');
 
 Route::post('/profile/photo', [BioProfileController::class, 'updateProfilePhoto'])->name('profile.updatePhoto');
 Route::delete('/profile/photo', [BioProfileController::class, 'deleteProfilePhoto'])->name('profile.deletePhoto');
@@ -65,7 +67,7 @@ Route::delete('/profile/photo', [BioProfileController::class, 'deleteProfilePhot
 //------------------------Route Post---------------------------
 Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
 Route::get('/', [PostController::class, 'index'])->name('home');
-Route::delete('/post/{post}', [PostController::class, 'deletePost'])->name('deletePost');
+Route::delete('/posts/{post}', [PostController::class, 'deletePost'])->name('deletePost');
 
 //------------------------Route Sport---------------------------
 Route::get('/bluesport', [SportController::class, 'showSport'])->name('bluesport');
@@ -79,6 +81,8 @@ Route::get('/myEvents', [EventController::class, 'myEvents'])->name('myEvents');
 Route::get('/myEvents/{event}', [EventController::class, 'viewMore'])->name('viewMore');
 Route::post('/bluevent/{event}', [EventController::class, 'joinEvent'])->name('joinEvent');
 Route::delete('/leaveEvent/{event}', [EventController::class, 'leaveEvent'])->name('leaveEvent');
+Route::post('/bluevent', [EventController::class, 'addEvent'])->name('addEvent');
+Route::get('/myEvents/delete/{event}', [EventController::class, 'deleteEvent'])->name('deleteEvent');
 
 Route::delete('/removeUser/{event}/{user}', [EventController::class, 'removeUser'])->name('removeUser');
 

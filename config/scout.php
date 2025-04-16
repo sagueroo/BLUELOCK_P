@@ -142,7 +142,7 @@ return [
         'index-settings' => [
                 'users' => [
             //     'filterableAttributes'=> ['id', 'name', 'email'],
-                    'sortableAttributes' => ['name', 'user_name']
+                  //  'sortableAttributes' => ['name', 'user_name']
             ],
         ],
     ],

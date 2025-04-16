@@ -50,7 +50,7 @@
     <div id="createEventPopup" class="popup" style="display: none;">
         <div class="popup-content">
             <h2>Create Event</h2>
-            <form action="" method="POST">
+            <form action="{{ route('addEvent') }}" method="POST">
                 @csrf
                 <div class="form-group">
                     <label for="title">Event Title</label>

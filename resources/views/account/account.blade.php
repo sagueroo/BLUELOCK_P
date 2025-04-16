@@ -62,7 +62,7 @@
     </div>
 
 
-
+    <script src="{{ asset('js/account/account.js') }}"></script>
 </x-app-layout>
 
 

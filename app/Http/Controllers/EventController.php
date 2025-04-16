@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
 use App\Models\Event;
 
@@ -96,6 +97,39 @@ class EventController
         $event->users()->detach($user->id);
 
         return back()->with('success', "L'utilisateur a été supprimé de l'événement.");
+    }
+
+    public function addEvent(Request $request)
+    {
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'event_type' => 'required|string',
+            'sport_id' => 'required|exists:sports,id',
+            'date' => 'required|date',
+            'time' => 'required',
+            'location' => 'required|string|max:255',
+            'description' => 'required|string',
+            'max_participants' => 'required|integer|min:1',
+        ]);
+
+        $event = new Event();
+        $event->title = $request->title;
+        $event->type = $request->event_type;
+        $event->sport_id = $request->sport_id;
+        $event->date = $request->date;
+        $event->time = $request->time;
+        $event->location = $request->location;
+        $event->description = $request->description;
+        $event->max_participants = $request->max_participants;
+        $event->user_id = auth()->id(); // le créateur de l’événement
+        $event->save();
+
+        return redirect()->back()->with('success', 'Event created successfully!');
+    }
+
+    public function deleteEvent(Event $event) {
+        $event->delete();
+        return back()->with('success', 'Event deleted successfully!');
     }
 
 

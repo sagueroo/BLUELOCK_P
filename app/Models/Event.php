@@ -8,7 +8,7 @@ use Laravel\Scout\Searchable;
 
 class Event extends Model
 {
-    use Searchable;
+   // use Searchable;
     use HasFactory;
 
     protected $fillable = [

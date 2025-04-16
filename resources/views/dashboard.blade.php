@@ -34,16 +34,20 @@
 
 
             <!-- Affichage des posts -->
+            <!-- Affichage des posts -->
             @foreach($posts as $post)
                 <div class="post">
                     <div class="post-header">
-                        <a href="{{ route('account.show') }}">
-                            <img src="{{ Auth::user()->profile_photo_path ? asset('storage/' . Auth::user()->profile_photo_path) : asset('pictures/pop.png') }}"
+                        <a href="{{ route('account.show', ['id' => $post->user->id]) }}">
+                            <img src="{{ $post->user->profile_photo_path ? (\Illuminate\Support\Str::startsWith($post->user->profile_photo_path, 'http') ? $post->user->profile_photo_path : asset('storage/' . $post->user->profile_photo_path)) : asset('pictures/pop.png') }}"
                                  alt="Photo de profil"
                                  class="nav-profile-pic">
                         </a>
                         <div class="post-info">
-                            <strong>{{ $post->user->name}}</strong>
+                            <!-- Lien vers le profil de l'utilisateur -->
+                            <a href="{{ route('account.show', ['id' => $post->user->id]) }}">
+                                <strong>{{ $post->user->name }}</strong>
+                            </a>
                             <span class="post-time">{{ $post->created_at->diffForHumans() }}</span>
                         </div>
                     </div>

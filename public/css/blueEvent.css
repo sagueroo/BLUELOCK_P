@@ -111,6 +111,24 @@
     background-color: #007cb2;
 }
 
+.delete-btn {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s ease;
+    font-weight: 600;
+    width: 100%;
+    margin-top: 15px;
+    text-align: center;
+}
+
+.delete-btn:hover {
+    background-color: #c0392b;
+}
+
 .joined {
     background-color: white;
     color: #009ddc;

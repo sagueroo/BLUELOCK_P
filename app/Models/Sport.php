@@ -9,7 +9,7 @@ use Laravel\Scout\Searchable;
 
 class Sport extends Model
 {
-    use Searchable;
+   // use Searchable;
     use HasFactory;
 
     protected $fillable = ['name'];
