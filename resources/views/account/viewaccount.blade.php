@@ -17,13 +17,13 @@
                     <!-- Bouton "Suivi(e)" avec option de désabonnement -->
                     <form action="{{ route('account.unfollow', ['id' => $user->id]) }}" method="POST">
                         @csrf
-                        <button type="submit" class="btn-follow active">Suivi(e)</button>
+                        <button type="submit" class="btn-follow active">Unfollow</button>
                     </form>
                 @else
                     <!-- Bouton "Suivre" -->
                     <form action="{{ route('account.follow', ['id' => $user->id]) }}" method="POST">
                         @csrf
-                        <button type="submit" class="btn-follow">Suivre</button>
+                        <button type="submit" class="btn-follow">Follow</button>
                     </form>
                 @endif
             </div>
