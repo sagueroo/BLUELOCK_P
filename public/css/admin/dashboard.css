@@ -1,0 +1,126 @@
+/* Conteneur principal */
+.wrapper {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Titre principal */
+.content h2 {
+    font-size: 26px;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Filtres */
+.dashboard-filters {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.filter-btn {
+    padding: 10px 18px;
+    border: none;
+    border-radius: 8px;
+    background-color: #f1f5fb;
+    color: #333;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+.filter-btn:hover {
+    background-color: #dbe9ff;
+}
+
+.filter-btn.active {
+    background-color: #009ddc;
+    color: white;
+}
+
+/* Sections */
+.dashboard-section {
+    display: none;
+}
+
+.dashboard-section.active {
+    display: block;
+}
+
+/* Cartes */
+.card.admin-item {
+    background-color: #fefefe;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    margin-bottom: 25px;
+    transition: transform 0.2s ease-in-out;
+}
+
+.card.admin-item:hover {
+    transform: scale(1.005);
+}
+
+/* En-tête de la carte */
+.card-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.card-header img {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #ccc;
+}
+
+.card-header strong {
+    font-size: 15px;
+    color: #1e1e1e;
+}
+
+.timestamp {
+    font-size: 13px;
+    color: #888;
+}
+
+/* Contenu des cartes */
+.card-content p {
+    font-size: 14.5px;
+    color: #333;
+    line-height: 1.6;
+    text-align: left;
+}
+
+/* Image du post */
+.card-image {
+    width: 100%;
+    max-height: 350px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-top: 15px;
+}
+
+/* Bouton de suppression */
+.delete-btn {
+    margin-top: 15px;
+    padding: 10px 16px;
+    border: none;
+    background-color: #e63946;
+    color: white;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.delete-btn:hover {
+    background-color: #c92335;
+}

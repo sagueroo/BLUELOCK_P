@@ -1,43 +1,108 @@
 <x-app-layout>
+    <!-- Feuilles de style -->
     <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/admin/dashboard.css') }}">
 
     <div class="wrapper">
         <main class="content">
-            <h2 style="margin-bottom: 30px;">Admin Dashboard - Posts Management</h2>
+            <h2 style="margin-bottom: 30px;">Admin Dashboard</h2>
 
-            <!-- Liste de tous les posts -->
-            @foreach($posts as $post)
-                <div class="post">
-                    <div class="post-header">
-                        <a href="{{ route('account.show', $post->user->id) }}">
-                            <img src="{{ $post->user->profile_photo_path
-                                ? asset('storage/' . $post->user->profile_photo_path)
-                                : asset('pictures/pop.png') }}"
-                                 alt="Photo de profil"
-                                 class="nav-profile-pic">
-                        </a>
-                        <div class="post-info">
-                            <strong>{{ $post->user->name }}</strong>
-                            <span class="post-time">{{ $post->created_at->diffForHumans() }}</span>
+            <!-- Filtres -->
+            <div class="dashboard-filters">
+                <button class="filter-btn active" data-target="posts-section">Posts</button>
+                <button class="filter-btn" data-target="users-section">Users</button>
+                <button class="filter-btn" data-target="events-section">Events</button>
+            </div>
+
+            <!-- SECTION: Posts -->
+            <div id="posts-section" class="dashboard-section active">
+                <h3>Posts</h3>
+                @foreach($posts as $post)
+                    <div class="card admin-item">
+                        <div class="card-header">
+                            <img src="{{ $post->user->profile_photo_url }}" alt="Photo de profil">
+                            <div>
+                                <strong>{{ $post->user->name }}</strong>
+                                <div class="timestamp">{{ $post->created_at->diffForHumans() }}</div>
+                            </div>
                         </div>
+                        <div class="card-content">
+                            <p>{{ $post->content }}</p>
+                        </div>
+                        @if($post->image_path)
+                            <img src="{{ asset('storage/' . $post->image_path) }}" class="card-image" alt="Image du post">
+                        @endif
+                        <form action="{{ route('deletePostAdmin', ['post' => $post->id]) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="delete-btn">Delete</button>
+                        </form>
                     </div>
+                @endforeach
+            </div>
 
-                    @if($post->image_path)
-                        <img src="{{ asset('storage/' . $post->image_path) }}" alt="Image du post" class="post-image">
-                    @endif
+            <!-- SECTION: Users -->
+            <div id="users-section" class="dashboard-section">
+                <h3>Utilisateurs</h3>
+                @foreach($users as $user)
+                    <div class="card admin-item">
+                        <div class="card-header">
+                            <img src="{{ $user->profile_photo_url }}" alt="Photo de profil">
+                            <div>
+                                <strong>{{ $user->name }}</strong>
+                                <div class="timestamp">{{ $user->email }}</div>
+                            </div>
+                        </div>
+                        <form action="{{ route('deleteUserAdmin', ['user' => $user->id]) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="delete-btn">Delete</button>
+                        </form>
+                    </div>
+                @endforeach
+            </div>
 
-                    <p>{{ $post->content }}</p>
+            <!-- SECTION: Events -->
+            <div id="events-section" class="dashboard-section">
+                <h3>Événements</h3>
+                @foreach($events as $event)
+                    <div class="card admin-item">
+                        <div class="card-header">
+                            <div>
+                                <strong>{{ $event->title }}</strong>
+                                <div class="timestamp">{{ $event->date }}</div>
 
-                    <!-- Bouton de suppression visible pour l'admin -->
-                    <form action="{{ route('deletePost', ['post' => $post->id]) }}" method="POST" style="margin-top: 15px;">
-                        @csrf
-                        <input type="hidden" name="_method" value="DELETE">
-                        <button type="submit" class="locker-btn" style="background-color: crimson;">
-                            Delete
-                        </button>
-                    </form>
-                </div>
-            @endforeach
+                            </div>
+                        </div>
+                        <form action="{{ route('deleteEventAdmin', ['event' => $event->id]) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="delete-btn">Delete</button>
+                        </form>
+                    </div>
+                @endforeach
+            </div>
         </main>
     </div>
+
+    <!-- Script pour le changement de section -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const buttons = document.querySelectorAll(".filter-btn");
+            const sections = document.querySelectorAll(".dashboard-section");
+
+            buttons.forEach(btn => {
+                btn.addEventListener("click", () => {
+                    buttons.forEach(b => b.classList.remove("active"));
+                    btn.classList.add("active");
+
+                    const target = btn.dataset.target;
+                    sections.forEach(section => {
+                        section.classList.remove("active");
+                        if (section.id === target) section.classList.add("active");
+                    });
+                });
+            });
+        });
+    </script>
 </x-app-layout>

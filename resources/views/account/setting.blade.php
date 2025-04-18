@@ -1,6 +1,6 @@
 <x-app-layout>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.6/cropper.css" integrity="sha256-jKV9n9bkk/CTP8zbtEtnKaKf+ehRovOYeKoyfthwbC8=" crossorigin="anonymous" />
-    <link rel="stylesheet" href="{{ asset('css/setting.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/account/setting.css') }}">
 
     <div class="contain">
         <h2>Modifier le profil</h2>
@@ -56,4 +56,4 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.6/cropper.js" crossorigin="anonymous"></script>
-<script src="{{ asset('js/setting.js') }}"></script>
+<script src="{{ asset('js/account/setting.js') }}"></script>

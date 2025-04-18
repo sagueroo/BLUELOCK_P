@@ -47,14 +47,18 @@ Route::middleware('auth')->group(function () {
 //------------------------Route Admin---------------------------
 //Source utilisé pour réaliser le middleware : https://www.youtube.com/watch?v=b-qEj11h7as&t=1225s
 Route::get('admin/dashboard',[AdminController::class,'dashboard'])->middleware(['auth','admin'])->name('admin.dashboard');
-Route::delete('/admin/posts/{post}', [AdminController::class, 'deletePost'])->middleware(['auth', 'admin'])->name('deletePost');
+Route::delete('/admin/posts/{post}', [AdminController::class, 'deletePost'])->name('deletePostAdmin')->middleware(['auth', 'admin']);
+Route::delete('/admin/events/{event}', [AdminController::class, 'deleteEvent'])->name('deleteEventAdmin')->middleware(['auth', 'admin']);
+Route::delete('/admin/users/{user}', [AdminController::class, 'deleteUser'])->name('deleteUserAdmin')->middleware(['auth', 'admin']);
+
+
 
 
 require __DIR__.'/auth.php';
 
 
 Route::get('/account/{id?}', [AccountController::class, 'show'])->name('account.show');
-Route::get('/account/setting', [SettingController::class, 'show'])->name('setting.show');
+Route::get('/account/setting', [SettingController::class, 'moreSetting'])->name('moreSetting');
 Route::post('/profile/updateBio', [BioProfilController::class, 'updateBio'])->name('profile.updateBio');
 Route::post('/account/{id}/follow', [AccountController::class, 'follow'])->name('account.follow');
 Route::post('/account/{id}/unfollow', [AccountController::class, 'unfollow'])->name('account.unfollow');

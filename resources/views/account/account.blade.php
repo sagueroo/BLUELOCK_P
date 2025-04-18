@@ -1,5 +1,3 @@
-
-
 <x-app-layout>
     <link rel="stylesheet" href="{{ asset('css/account/account.css') }}">
     <div class="header">
@@ -7,7 +5,7 @@
         <div class="user-info">
             <div class="user-header">
                 <h2>{{ Auth::user()->name }}</h2>
-                <a href="{{ route('setting.show') }}">
+                <a href="{{ route('moreSetting') }}">
                     <button class="btn-follow">Modifier le profil</button>
                 </a>
             </div>
