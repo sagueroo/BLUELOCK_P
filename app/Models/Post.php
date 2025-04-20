@@ -8,7 +8,7 @@ use Laravel\Scout\Searchable;
 
 class Post extends Model
 {
-    //use Searchable;
+    use Searchable;
     use HasFactory;
 
     protected $fillable = [
@@ -22,5 +22,13 @@ class Post extends Model
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function toSearchableArray()
+    {
+        return [
+            'content' => $this->content
+            // Add other searchable attributes
+        ];
     }
 }

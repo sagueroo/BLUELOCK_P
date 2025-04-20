@@ -9,7 +9,7 @@ use Laravel\Scout\Searchable;
 
 class Sport extends Model
 {
-   // use Searchable;
+    use Searchable;
     use HasFactory;
 
     protected $fillable = ['name'];
@@ -17,6 +17,14 @@ class Sport extends Model
     public function users(): BelongsToMany
     {
         return $this->belongsToMany(User::class, 'users_sports', 'sport_id', 'user_id');
+    }
+
+    public function toSearchableArray()
+    {
+        return [
+            'name' => $this->name
+            // Add other searchable attributes
+        ];
     }
 
 }

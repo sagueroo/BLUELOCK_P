@@ -115,13 +115,13 @@ return [
     'algolia' => [
         'id' => env('ALGOLIA_APP_ID', ''),
         'secret' => env('ALGOLIA_SECRET', ''),
-        'index-settings' => [
+       // 'index-settings' => [
             // 'users' => [
             //     'searchableAttributes' => ['id', 'name', 'email'],
             //     'attributesForFaceting'=> ['filterOnly(email)'],
             // ],
         ],
-    ],
+    //],
 
     /*
     |--------------------------------------------------------------------------
@@ -136,16 +136,16 @@ return [
     |
     */
 
-    'meilisearch' => [
-        'host' => env('MEILISEARCH_HOST', 'https://ms-145456ed7a3f-21448.lon.meilisearch.io'),
-        'key' => env('2cb0e0a0f26e2b9d39daa2d4d02fb6525bc2fc71'),
-        'index-settings' => [
-                'users' => [
+    //'meilisearch' => [
+      //  'host' => env('MEILISEARCH_HOST', ''),
+        //'key' => env('MEILISEARCH_KEY', null),
+        //'index-settings' => [
+               // 'users' => [
             //     'filterableAttributes'=> ['id', 'name', 'email'],
                   //  'sortableAttributes' => ['name', 'user_name']
-            ],
-        ],
-    ],
+            //  ],
+        //],
+    //],
 
     /*
     |--------------------------------------------------------------------------

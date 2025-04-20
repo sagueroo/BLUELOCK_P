@@ -11,7 +11,7 @@ use Laravel\Scout\Searchable;
 
 class User extends Authenticatable
 {
-    //use Searchable;
+    use Searchable;
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
 
@@ -62,6 +62,25 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Event::class,'events_users');
     }
+
+    public function followers()
+    {
+        return $this->belongsToMany(User::class, 'followers', 'following_id', 'follower_id');
+    }
+
+    public function following()
+    {
+        return $this->belongsToMany(User::class, 'followers', 'follower_id', 'following_id');
+    }
+
+    public function toSearchableArray()
+    {
+        return [
+            'name' => $this->name
+            // Add other searchable attributes
+        ];
+    }
+
 
 
 

@@ -100,4 +100,4 @@ Route::get('/blueresult', [ResultController::class, 'index'])->name('blueresult'
 
 
 // web.php
-Route::get('/search', [SearchController::class, 'index'])->name('search');
+Route::get('/search', [SearchController::class, 'search'])->name('search');

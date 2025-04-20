@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 
+
 class FollowController extends Controller
 {
 
@@ -18,16 +19,16 @@ class FollowController extends Controller
         return back();
     }
 
-    public function showFollowers(User $user)
+    public function showFollowers($id)
     {
-       // $user = User::findOrFail($id);
+        $user = User::findOrFail($id);
         $followers = $user->followers()->get();
         return view('followers', compact('user', 'followers'));
     }
 
-    public function showFollowing(User $user)
+    public function showFollowing($id)
     {
-       // $user = User::findOrFail($id);
+       $user = User::findOrFail($id);
         $following = $user->following()->get();
         return view('following', compact('user', 'following'));
     }

@@ -8,7 +8,7 @@ use Laravel\Scout\Searchable;
 
 class Event extends Model
 {
-   // use Searchable;
+    use Searchable;
     use HasFactory;
 
     protected $fillable = [
@@ -38,6 +38,12 @@ class Event extends Model
         return $this->belongsToMany(User::class, 'events_users');
     }
 
-
+    public function toSearchableArray()
+    {
+        return [
+            'title' => $this->title
+            // Add other searchable attributes
+        ];
+    }
 
 }
