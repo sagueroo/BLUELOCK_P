@@ -34,9 +34,9 @@ class PostController extends Controller
         return redirect()->back()->with('success', 'Post créé avec succès !');
     }
 
-    // Fonction pour récupérer tous les posts
     public function index()
     {
+        //Récupère tout les posts
         $posts = Post::with('user')->orderBy('created_at', 'desc')->get();
         return view('dashboard', compact('posts'));
     }

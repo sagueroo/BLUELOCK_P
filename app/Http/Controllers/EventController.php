@@ -11,15 +11,14 @@ class EventController
 {
     public function showEvent()
     {
-        // Récupère l'utilisateur actuellement authentifié
         $user = auth()->user();
 
-        // Récupère les sports auxquels l'utilisateur est inscrit (avec leurs informations complètes)
-        $sportsSubscribed = $user->sports;  // Retirer le pluck('id') pour récupérer les objets complets
+        // Récupère les sports auxquels l'utilisateur est inscrit
+        $sportsSubscribed = $user->sports;
 
         // Récupère les événements associés à ces sports et charge les relations sport et user
-        $events = Event::with('sport', 'user')  // 'sport' pour récupérer le sport lié à l'événement, 'user' pour récupérer l'utilisateur qui a créé l'événement
-        ->whereIn('sport_id', $sportsSubscribed->pluck('id'))  // Filtre par les sports auxquels l'utilisateur est inscrit
+        $events = Event::with('sport', 'user')
+        ->whereIn('sport_id', $sportsSubscribed->pluck('id'))
         ->get();
 
         // Calcul du nombre de places restantes pour chaque événement
@@ -53,7 +52,7 @@ class EventController
         // Inscrire l'utilisateur
         $event->users()->attach($user->id);
 
-        return back()->with('success', 'Vous avez rejoint l’événement avec succès.');
+        return back()->with('success', 'Vous avez rejoint l événement avec succès.');
     }
 
     public function leaveEvent(Event $event)
@@ -61,21 +60,20 @@ class EventController
         $user = auth()->user();
 
         if (!$event->users->contains($user->id)) {
-            return back()->with('error', 'Vous n\'êtes pas inscrit à cet événement.');
+            return back()->with('error', 'Vous n êtes pas inscrit à cet événement.');
         }
 
         $event->users()->detach($user->id);
 
-        return back()->with('success', 'Vous avez quitté l\'événement.');
+        return back()->with('success', 'Vous avez quitté l événement.');
     }
 
 
     public function myEvents()
     {
-        // Récupérer l'utilisateur connecté
         $user = Auth::user();
 
-        // Récupérer uniquement les événements créés par cet utilisateur
+        // Récupérer les événements créés par l'user connecté
         $events = Event::where('user_id', $user->id)->get();
 
         // Retourner la vue avec les événements
@@ -93,7 +91,7 @@ class EventController
 
     public function removeUser(Event $event, User $user)
     {
-
+        //Enleve l'entrée de l'user avec l'event
         $event->users()->detach($user->id);
 
         return back()->with('success', "L'utilisateur a été supprimé de l'événement.");
@@ -121,7 +119,7 @@ class EventController
         $event->location = $request->location;
         $event->description = $request->description;
         $event->max_participants = $request->max_participants;
-        $event->user_id = auth()->id(); // le créateur de l’événement
+        $event->user_id = auth()->id();
         $event->save();
 
         return redirect()->back()->with('success', 'Event created successfully!');

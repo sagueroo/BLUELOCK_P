@@ -1,8 +1,6 @@
 <x-app-layout>
-    <!-- Feuilles de style -->
     <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
     <link rel="stylesheet" href="{{ asset('css/admin/dashboard.css') }}">
-
     <div class="wrapper">
         <main class="content">
             <h2 style="margin-bottom: 30px;">Admin Dashboard</h2>
@@ -84,25 +82,5 @@
             </div>
         </main>
     </div>
-
-    <!-- Script pour le changement de section -->
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const buttons = document.querySelectorAll(".filter-btn");
-            const sections = document.querySelectorAll(".dashboard-section");
-
-            buttons.forEach(btn => {
-                btn.addEventListener("click", () => {
-                    buttons.forEach(b => b.classList.remove("active"));
-                    btn.classList.add("active");
-
-                    const target = btn.dataset.target;
-                    sections.forEach(section => {
-                        section.classList.remove("active");
-                        if (section.id === target) section.classList.add("active");
-                    });
-                });
-            });
-        });
-    </script>
+    <script src="{{ asset('js/admin/dashboard.js') }}"></script>
 </x-app-layout>

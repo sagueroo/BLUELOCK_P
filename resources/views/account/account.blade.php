@@ -15,14 +15,19 @@
                     <p>Publications</p>
                 </div>
                 <div>
-                    <strong>{{ $followersCount }}</strong>
-                    <p>Abonnés</p>
+                    <a href="{{ route('showFollowers', Auth::user()->id) }}">
+                        <strong>{{ $followersCount }}</strong>
+                        <p>Abonnés</p>
+                    </a>
                 </div>
                 <div>
-                    <strong>{{ $followingCount }}</strong>
-                    <p>Abonnements</p>
+                    <a href="{{ route('showFollowing', Auth::user()->id) }}">
+                        <strong>{{ $followingCount }}</strong>
+                        <p>Abonnements</p>
+                    </a>
                 </div>
             </div>
+
             <p>{{ Auth::user()->bio }} </p>
         </div>
     </div>

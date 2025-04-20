@@ -62,6 +62,10 @@ Route::get('/account/setting', [SettingController::class, 'moreSetting'])->name(
 Route::post('/profile/updateBio', [BioProfilController::class, 'updateBio'])->name('profile.updateBio');
 Route::post('/account/{id}/follow', [AccountController::class, 'follow'])->name('account.follow');
 Route::post('/account/{id}/unfollow', [AccountController::class, 'unfollow'])->name('account.unfollow');
+Route::get('/followers/{id}', [FollowController::class, 'showFollowers'])->name('showFollowers');
+Route::get('/following/{id}', [FollowController::class, 'showFollowing'])->name('showFollowing');
+
+
 
 Route::post('/profile/photo', [BioProfileController::class, 'updateProfilePhoto'])->name('profile.updatePhoto');
 Route::delete('/profile/photo', [BioProfileController::class, 'deleteProfilePhoto'])->name('profile.deletePhoto');

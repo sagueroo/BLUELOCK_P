@@ -32,7 +32,7 @@ class BioProfileController extends Controller
         return back()->with('success', 'Photo de profil mise à jour avec succès !');
     }
 
-    // 🗑️ Méthode pour supprimer la photo
+
     public function deleteProfilePhoto()
     {
         $user = Auth::user();

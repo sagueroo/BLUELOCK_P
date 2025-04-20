@@ -21,19 +21,19 @@ class AccountController extends Controller
         // Vérifier si l'utilisateur connecté est en train de voir son propre profil
         $isOwnProfile = (Auth::id() == $user->id);
 
-        // Récupérer les statistiques
+        // Récupérer ces follows et ces posts
         $followersCount = Follower::where('following_id', $user->id)->count();
         $followingCount = Follower::where('follower_id', $user->id)->count();
         $postsCount = Post::where('user_id', $user->id)->count();
         $posts = Post::where('user_id', $user->id)->orderBy('created_at', 'desc')->get();
 
 
-        // Afficher `account.blade.php` si c'est le profil de l'utilisateur connecté
+        // Afficher account.blade.php si c'est le profil de l'utilisateur connecté
         if ($isOwnProfile) {
             return view('account.account', compact('user', 'isOwnProfile', 'followersCount', 'followingCount', 'postsCount', 'posts'));
         }
 
-        // Sinon, afficher `viewprofile.blade.php` pour un autre utilisateur
+        // Sinon, afficher viewprofile.blade.php pour un autre utilisateur
         return view('account.viewaccount', compact('user', 'isOwnProfile', 'followersCount', 'followingCount', 'postsCount', 'posts'));
     }
 
@@ -48,7 +48,7 @@ class AccountController extends Controller
             ->exists();
 
         if (!$alreadyFollowing) {
-            // Ajouter l'entrée dans la table followers
+            // Ajouter dans la table followers
             Follower::create([
                 'follower_id' => $currentUser->id,
                 'following_id' => $userToFollow->id,

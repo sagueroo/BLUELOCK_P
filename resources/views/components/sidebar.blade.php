@@ -23,11 +23,6 @@
             </a>
         </li>
         <li>
-            <a href="#bluelike" class="menu-item">
-                <img src="{{ asset('pictures/heart.png') }}" alt="Like"> <span>Likes</span>
-            </a>
-        </li>
-        <li>
             <a href="{{ route('blueresult') }}" class="menu-item">
                 <img src="{{ asset('pictures/result.png') }}" alt="Results"> <span>Results</span>
             </a>
@@ -44,8 +39,13 @@
             </a>
         </li>
     </ul>
+{{--    Source ChatGPT--}}
+    <a href="{{ auth()->user()->usertype === 'admin' ? route('admin.dashboard') : route('dashboard') }}">
+        <button class="locker-btn1">
+            {{ auth()->user()->usertype === 'admin' ? 'ADMIN' : 'LOCKER' }}
+        </button>
+    </a>
 
-    <button class="locker-btn1">LOCKER</button>
 </nav>
 
 <style>

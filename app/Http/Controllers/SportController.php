@@ -13,7 +13,7 @@ class SportController extends Controller
         $sports = Sport::all();
         $user = Auth::user();
 
-        if ($user) { // Vérifie si l'utilisateur est bien connecté
+        if ($user) {
             foreach ($sports as $sport) {
                 $sport->isRegistered = $user->sports->contains('id', $sport->id);
             }

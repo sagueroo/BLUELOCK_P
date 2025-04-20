@@ -1,3 +1,4 @@
+{{--Base de toute nos pages, crée initialement avec Laravel et modifié pour notre projet--}}
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
