@@ -33,7 +33,7 @@
             </form>
 
 
-            <!-- Affichage des posts -->
+
             <!-- Affichage des posts -->
             @foreach($posts as $post)
                 <div class="post">
