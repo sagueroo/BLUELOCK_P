@@ -6,24 +6,24 @@
             <div class="user-header">
                 <h2>{{ Auth::user()->name }}</h2>
                 <a href="{{ route('moreSetting') }}">
-                    <button class="btn-follow">Modifier le profil</button>
+                    <button class="btn-follow">Modify profile</button>
                 </a>
             </div>
             <div class="stats">
                 <div>
                     <strong>{{ $postsCount }}</strong>
-                    <p>Publications</p>
+                    <p>Posts</p>
                 </div>
                 <div>
                     <a href="{{ route('showFollowers', ['id' => Auth::user()->id])}}">
                         <strong>{{ $followersCount }}</strong>
-                        <p>Abonnés</p>
+                        <p>Followers</p>
                     </a>
                 </div>
                 <div>
                     <a href="{{ route('showFollowing',['id' => Auth::user()->id])}}">
                         <strong>{{ $followingCount }}</strong>
-                        <p>Abonnements</p>
+                        <p>Following</p>
                     </a>
                 </div>
             </div>
@@ -34,8 +34,8 @@
 
     <!-- Navigation -->
     <div class="navigation">
-        <a href="#">Publications</a>
-        <a href="#">Aimé</a>
+        <a href="#">Posts</a>
+        <a href="#">Team</a>
     </div>
 
     <!-- Publications -->
@@ -54,12 +54,12 @@
     <!-- Modal de suppression de post -->
     <div id="confirmPostModal" class="modal">
         <div class="modal-content">
-            <p id="modalPostText">Voulez-vous vraiment supprimer ce post ?</p>
+            <p id="modalPostText">Do you really want to delete this post? ?</p>
             <form id="deletePostForm" method="POST">
                 @csrf
                 @method('DELETE')
-                <button class="confirm" type="submit">Supprimer</button>
-                <button class="cancel" type="button" onclick="closePostModal()">Annuler</button>
+                <button class="confirm" type="submit">Delete</button>
+                <button class="cancel" type="button" onclick="closePostModal()">Cancel</button>
             </form>
         </div>
     </div>

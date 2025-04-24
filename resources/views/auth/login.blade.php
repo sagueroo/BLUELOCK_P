@@ -9,11 +9,10 @@
         <h2>The future is yours</h2>
         <a href="/register"><h1>Join us</h1></a>
         <p class="instructions">Sign up now.</p>
-        <x-social-button type="google"><a href="{{ route('auth.google') }}">
-                <button class="google-btn">Google...</button></a></x-social-button>
+        <x-social-button type="google" id="google-link"><a href="{{ route('auth.google') }}">Google <img src="{{ asset('pictures/google.png') }}" alt="Logo Google"> </a></x-social-button>
 
         <div class="divider">
-            <hr><span>ou</span><hr>
+            <hr><span>or</span><hr>
         </div>
 
         <button class="create-account">Create account</button>
@@ -36,13 +35,16 @@
 </x-guest-layout>
 <style>
     .google-btn {
-        background-color: #db4437;
-        color: #fff;
+        border:3px solid #db4437;
+        background-color: #fff;
+        color : #db4437;
     }
-
-    .apple-btn{
-        background-color: #000;
-        color: #fff;
+    #google-link {
+        display: flex;
+        align-items: center;
+        gap: 8px; /* espace entre logo et texte */
+        text-decoration: none;
+        color: inherit;
     }
 </style>
 <script src="{{ asset('js/auth/login.js') }}"></script>

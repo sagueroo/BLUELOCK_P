@@ -19,7 +19,14 @@
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
 }
 
-.message-box input,
+.message-box input {
+    flex: 3;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
 .message-box select {
     flex: 1;
     padding: 10px;
@@ -27,6 +34,7 @@
     border-radius: 8px;
     font-size: 14px;
 }
+
 
 .upload-icon img {
     width: 24px;

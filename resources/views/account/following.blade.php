@@ -11,4 +11,5 @@
             </button>
         @endforeach
     </div>
+    <x-trending />
 </x-app-layout>

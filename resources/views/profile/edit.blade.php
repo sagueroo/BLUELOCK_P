@@ -34,13 +34,3 @@
     </div>
     </div>
 </x-app-layout>
-
-<style>
-    .contain {
-        display: flex;
-        align-items: center;
-        gap: 40px;
-        padding-left: 110px;
-        padding-top: 60%;
-    }
-</style>

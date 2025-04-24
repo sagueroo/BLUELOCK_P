@@ -20,84 +20,98 @@ use App\Models\Sport;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
+// ------------------------ Routes: Guest ------------------------
+
+// login page
 Route::get('/', function () {
     return view('auth/login');
 });
 
+// ------------------------ Routes: Dashboard ------------------------
 Route::get('/dashboard', function () {
     $user = Auth::user();
-    if (!$user) {
-        return view('auth/login');
-    }
+    if (!$user) return view('auth/login');
+
     $userSports = $user->sports->pluck('id');
-    // Récupère tous les posts
+
+    // get user sports + posts
     $posts = Post::whereIn('sport_id', $userSports)->orderBy('created_at', 'desc')->get();
     $sports = Sport::whereIn('id', $userSports)->get();
-    return view('dashboard',compact('posts','sports'));
+
+    return view('dashboard', compact('posts', 'sports'));
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 
-
+// ------------------------ Routes: Profile ------------------------
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-//------------------------Route Admin---------------------------
-//Source utilisé pour réaliser le middleware : https://www.youtube.com/watch?v=b-qEj11h7as&t=1225s
-Route::get('admin/dashboard',[AdminController::class,'dashboard'])->middleware(['auth','admin'])->name('admin.dashboard');
-Route::delete('/admin/posts/{post}', [AdminController::class, 'deletePost'])->name('deletePostAdmin')->middleware(['auth', 'admin']);
-Route::delete('/admin/events/{event}', [AdminController::class, 'deleteEvent'])->name('deleteEventAdmin')->middleware(['auth', 'admin']);
-Route::delete('/admin/users/{user}', [AdminController::class, 'deleteUser'])->name('deleteUserAdmin')->middleware(['auth', 'admin']);
+
+// ------------------------ Routes: Admin ------------------------
+// Source I used for admin middleware: https://www.youtube.com/watch?v=b-qEj11h7as&t=1225s
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::get('admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+    Route::delete('/admin/posts/{post}', [AdminController::class, 'deletePost'])->name('deletePostAdmin');
+    Route::delete('/admin/events/{event}', [AdminController::class, 'deleteEvent'])->name('deleteEventAdmin');
+    Route::delete('/admin/users/{user}', [AdminController::class, 'deleteUser'])->name('deleteUserAdmin');
+});
 
 
-
-
+// ------------------------ Routes: Auth (package) ------------------------
 require __DIR__.'/auth.php';
 
 
+// ------------------------ Routes: Account & Profile Extension ------------------------
 Route::get('/account/{id?}', [AccountController::class, 'show'])->name('account.show');
 Route::get('/account/setting', [SettingController::class, 'moreSetting'])->name('moreSetting');
+
+// bio update
 Route::post('/profile/updateBio', [BioProfilController::class, 'updateBio'])->name('profile.updateBio');
+
+// follow / unfollow system
 Route::post('/account/{id}/follow', [AccountController::class, 'follow'])->name('account.follow');
 Route::post('/account/{id}/unfollow', [AccountController::class, 'unfollow'])->name('account.unfollow');
+
+// follow lists
 Route::get('/followers/{id}', [FollowController::class, 'showFollowers'])->name('showFollowers');
 Route::get('/following/{id}', [FollowController::class, 'showFollowing'])->name('showFollowing');
 
-
-
+// profile photo
 Route::post('/profile/photo', [BioProfileController::class, 'updateProfilePhoto'])->name('profile.updatePhoto');
 Route::delete('/profile/photo', [BioProfileController::class, 'deleteProfilePhoto'])->name('profile.deletePhoto');
 
-//Route::post('/follow/{user}', [FollowController::class, 'toggle'])->name('follow.toggle');
 
-//------------------------Route Post---------------------------
+// ------------------------ Routes: Posts ------------------------
 Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
-Route::get('/', [PostController::class, 'index'])->name('home');
 Route::delete('/posts/{post}', [PostController::class, 'deletePost'])->name('deletePost');
 
-//------------------------Route Sport---------------------------
+
+// ------------------------ Routes: Sports ------------------------
 Route::get('/bluesport', [SportController::class, 'showSport'])->name('bluesport');
 Route::post('/bluesport/add-sport', [UsersSportsController::class, 'addSport'])->name('addSport');
 Route::post('/bluesport/delete-sport', [UsersSportsController::class, 'deleteSport'])->name('deleteSport');
 
-//------------------------Route Event---------------------------
 
+// ------------------------ Routes: Events ------------------------
 Route::get('/bluevent', [EventController::class, 'showEvent'])->name('blueevent');
 Route::get('/myEvents', [EventController::class, 'myEvents'])->name('myEvents');
 Route::get('/myEvents/{event}', [EventController::class, 'viewMore'])->name('viewMore');
+
 Route::post('/bluevent/{event}', [EventController::class, 'joinEvent'])->name('joinEvent');
 Route::delete('/leaveEvent/{event}', [EventController::class, 'leaveEvent'])->name('leaveEvent');
 Route::post('/bluevent', [EventController::class, 'addEvent'])->name('addEvent');
 Route::get('/myEvents/delete/{event}', [EventController::class, 'deleteEvent'])->name('deleteEvent');
 
+// kick user from event
 Route::delete('/removeUser/{event}/{user}', [EventController::class, 'removeUser'])->name('removeUser');
 
 
-//------------------------Route Result---------------------------
+// ------------------------ Routes: Results ------------------------
 Route::get('/blueresult', [ResultController::class, 'index'])->name('blueresult');
 
 
-// web.php
+// ------------------------ Routes: Search ------------------------
 Route::get('/search', [SearchController::class, 'search'])->name('search');

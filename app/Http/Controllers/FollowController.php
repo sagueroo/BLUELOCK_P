@@ -23,14 +23,14 @@ class FollowController extends Controller
     {
         $user = User::findOrFail($id);
         $followers = $user->followers()->get();
-        return view('followers', compact('user', 'followers'));
+        return view('account.followers', compact('user', 'followers'));
     }
 
     public function showFollowing($id)
     {
        $user = User::findOrFail($id);
         $following = $user->following()->get();
-        return view('following', compact('user', 'following'));
+        return view('account.following', compact('user', 'following'));
     }
 
 

@@ -13,5 +13,5 @@
             <p>Aucun abonné pour l’instant.</p>
         @endforelse
     </div>
-
+    <x-trending />
 </x-app-layout>

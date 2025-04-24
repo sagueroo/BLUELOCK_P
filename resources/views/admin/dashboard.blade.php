@@ -5,7 +5,7 @@
         <main class="content">
             <h2 style="margin-bottom: 30px;">Admin Dashboard</h2>
 
-            <!-- Filtres -->
+            <!-- Filters -->
             <div class="dashboard-filters">
                 <button class="filter-btn active" data-target="posts-section">Posts</button>
                 <button class="filter-btn" data-target="users-section">Users</button>
@@ -14,7 +14,6 @@
 
             <!-- SECTION: Posts -->
             <div id="posts-section" class="dashboard-section active">
-                <h3>Posts</h3>
                 @foreach($posts as $post)
                     <div class="card admin-item">
                         <div class="card-header">
@@ -41,7 +40,6 @@
 
             <!-- SECTION: Users -->
             <div id="users-section" class="dashboard-section">
-                <h3>Utilisateurs</h3>
                 @foreach($users as $user)
                     <div class="card admin-item">
                         <div class="card-header">
@@ -62,7 +60,6 @@
 
             <!-- SECTION: Events -->
             <div id="events-section" class="dashboard-section">
-                <h3>Événements</h3>
                 @foreach($events as $event)
                     <div class="card admin-item">
                         <div class="card-header">

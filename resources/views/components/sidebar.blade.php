@@ -4,32 +4,32 @@
     <ul class="menu">
         <li>
             <a href="{{ route('dashboard') }}" class="menu-item">
-                <img src="{{ asset('pictures/home.png') }}" alt="Home"> <span>Home</span>
+                <img src="{{ asset('pictures/home.png') }}" alt="Home"> <span>BlueHome</span>
             </a>
         </li>
         <li>
             <a href="{{ route('bluesport') }}" class="menu-item">
-                <img src="{{ asset('pictures/football.png') }}" alt="Sport"> <span>Sport</span>
+                <img src="{{ asset('pictures/football.png') }}" alt="Sport"> <span>BlueSport</span>
             </a>
         </li>
         <li>
             <a href="{{ route('blueevent') }}" class="menu-item">
-                <img src="{{ asset('pictures/event.png') }}" alt="Events"> <span>Events</span>
+                <img src="{{ asset('pictures/event.png') }}" alt="Events"> <span>BlueEvents</span>
             </a>
         </li>
         <li>
             <a href="#blueteam" class="menu-item">
-                <img src="{{ asset('pictures/team.png') }}" alt="Team"> <span>Team</span>
+                <img src="{{ asset('pictures/team.png') }}" alt="Team"> <span>BlueTeam</span>
             </a>
         </li>
         <li>
             <a href="{{ route('blueresult') }}" class="menu-item">
-                <img src="{{ asset('pictures/result.png') }}" alt="Results"> <span>Results</span>
+                <img src="{{ asset('pictures/result.png') }}" alt="Results"> <span>BlueResults</span>
             </a>
         </li>
         <li>
             <a href="{{ route('profile.edit') }}" class="menu-item">
-                <img src="{{ asset('pictures/setting.png') }}" alt="Settings"> <span>Settings</span>
+                <img src="{{ asset('pictures/setting.png') }}" alt="Settings"> <span>BlueSettings</span>
             </a>
         </li>
         <li class="menu-item profile">

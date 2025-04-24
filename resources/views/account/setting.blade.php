@@ -48,7 +48,7 @@
                 <textarea id="bio" name="bio" rows="4" maxlength="200" placeholder="Votre bio...">{{ Auth::user()->bio }}</textarea>
                 <div id="charCount" class="char-counter">{{ strlen(Auth::user()->bio) }} / 200</div>
             </div>
-            <button type="submit" class="btn-submit">Envoyer</button>
+            <button type="submit" class="btn-submit">Send</button>
         </form>
     </div>
 </x-app-layout>

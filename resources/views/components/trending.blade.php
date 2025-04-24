@@ -1,13 +1,13 @@
 <aside class="trending">
     <form action="{{ route('search') }}" method="GET">
-        <input type="text" class="search-input" name="q" placeholder="Recherche..." required>
+        <input type="text" class="search-input" name="q" placeholder="Search..." required>
         <button type="submit">🔍</button>
     </form>
 
 
 
     <div class="section">
-        <h3 class="section-title">TENDANCE</h3>
+        <h3 class="section-title">TREND</h3>
         <div class="trend-card">
             <p>#BlueWave</p>
             <span>24.3K posts</span>
@@ -36,7 +36,7 @@
         </div>
     </div>
 
-    <a href="#" class="more-link">Voir plus de profils</a>
+    <a href="#" class="more-link">See more profiles</a>
 </aside>
 
 <style>
@@ -47,6 +47,7 @@
         width: 270px;
         height: 100vh;
         background: #f6f9fc;
+        border-left: 1px solid #dbe2ef;
         padding: 30px 20px;
         box-shadow: -4px 0 15px rgba(0, 0, 0, 0.05);
         display: flex;

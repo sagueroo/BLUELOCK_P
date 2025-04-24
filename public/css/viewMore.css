@@ -85,3 +85,11 @@
     background-color: gray;
     color: white;
 }
+
+h2 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #34495e;
+    margin-bottom: 15px;
+    text-align: center;
+}
