@@ -6,7 +6,7 @@
     </div>
         <div class="event-section">
             <div class="buttons">
-                <button class="btn filter-btn" data-type="Tournament">Tournaments</button>
+                <button class="btn filter-btn" data-type="Tournament">Tournament</button>
                 <button class="btn filter-btn" data-type="Training">Training</button>
                 <button class="btn filter-btn" data-type="Conference">Conference</button>
                 <button class="btn add-event-btn" id="addEventBtn">+</button>

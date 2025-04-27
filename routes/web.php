@@ -65,11 +65,9 @@ require __DIR__.'/auth.php';
 
 
 // ------------------------ Routes: Account & Profile Extension ------------------------
-Route::get('/account/{id?}', [AccountController::class, 'show'])->name('account.show');
 Route::get('/account/setting', [SettingController::class, 'moreSetting'])->name('moreSetting');
+Route::get('/account/{id?}', [AccountController::class, 'show'])->name('account.show');
 
-// bio update
-Route::post('/profile/updateBio', [BioProfilController::class, 'updateBio'])->name('profile.updateBio');
 
 // follow / unfollow system
 Route::post('/account/{id}/follow', [AccountController::class, 'follow'])->name('account.follow');
@@ -82,6 +80,8 @@ Route::get('/following/{id}', [FollowController::class, 'showFollowing'])->name(
 // profile photo
 Route::post('/profile/photo', [BioProfileController::class, 'updateProfilePhoto'])->name('profile.updatePhoto');
 Route::delete('/profile/photo', [BioProfileController::class, 'deleteProfilePhoto'])->name('profile.deletePhoto');
+// bio update
+Route::post('/profile/updateBio', [BioProfilController::class, 'updateBio'])->name('profile.updateBio');
 
 
 // ------------------------ Routes: Posts ------------------------

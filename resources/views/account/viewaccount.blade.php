@@ -31,15 +31,15 @@
             <div class="stats">
                 <div>
                     <strong>{{ $postsCount }}</strong>
-                    <p>Publications</p>
+                    <p>Posts</p>
                 </div>
                 <div>
                     <strong>{{ $followersCount }}</strong>
-                    <p>Abonnés</p>
+                    <p>Followers</p>
                 </div>
                 <div>
                     <strong>{{ $followingCount }}</strong>
-                    <p>Abonnements</p>
+                    <p>Following</p>
                 </div>
             </div>
             <p>{{ $user->bio }}</p>
@@ -48,8 +48,8 @@
 
     <!-- Navigation -->
     <div class="navigation">
-        <a href="#">Publications</a>
-        <a href="#">Aimé</a>
+        <a href="#">Posts</a>
+        <a href="#">Teams</a>
     </div>
 
     <!-- Publications -->
