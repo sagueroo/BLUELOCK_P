@@ -81,6 +81,12 @@ class User extends Authenticatable
         ];
     }
 
+    public function club()
+    {
+        return $this->belongsTo(Club::class);
+    }
+
+
 
 
 

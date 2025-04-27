@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BioProfileController;
+use App\Http\Controllers\ClubController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\FollowController;
 use App\Http\Controllers\HomeController;
@@ -19,6 +20,7 @@ use App\Models\Post;
 use App\Models\Sport;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TeamController;
 
 Route::get('/', function () {
     return view('auth/login');
@@ -101,3 +103,22 @@ Route::get('/blueresult', [ResultController::class, 'index'])->name('blueresult'
 
 // web.php
 Route::get('/search', [SearchController::class, 'search'])->name('search');
+
+//------------------------Route Team---------------------------
+
+Route::get('/teams', [TeamController::class, 'index'])->name('teams.index');
+//Route::get('/teams/{id}', [TeamController::class, 'show'])->name('teams.show');
+Route::post('/teams/show', [TeamController::class, 'show'])->name('teams.show');
+
+//-------Route Clubs-----------
+
+Route::post('/clubs/join/{id}', [ClubController::class, 'join'])->name('clubs.join');
+
+Route::post('/clubs/toggle/{id}', [\App\Http\Controllers\ClubController::class, 'toggle'])->name('clubs.toggle');
+// web.php
+Route::get('/clubs/{id}/members', [ClubController::class, 'members'])->name('clubs.members');
+Route::get('/clubs/{club}/players', [ClubController::class, 'players'])->name('clubs.players');
+
+Route::get('/clubs', [TeamController::class, 'index'])->name('teams.index');
+
+Route::get('/teams/challenges', [TeamController::class, 'showChallenges'])->name('teams.challenges');

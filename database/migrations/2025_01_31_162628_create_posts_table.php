@@ -4,27 +4,32 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
+class CreatePostsTable extends Migration
 {
-    /**
-     * Run the migrations.
-     */
-    public function up(): void
+    public function up()
     {
-        Schema::create('posts', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('id_user')->constrained('users')->onDelete('cascade');
-            $table->string('content');
-            $table->string('image_path')->nullable(); // Ajout de la colonne pour l'image
-            $table->timestamps(); // created_at & updated_at
-        });
-    }
+        if (!Schema::hasTable('posts')) {
+            Schema::create('posts', function (Blueprint $table) {
+                $table->id();
+                $table->unsignedBigInteger('user_id');
+                $table->unsignedBigInteger('sport_id')->nullable();
+                $table->text('content')->nullable();
+                $table->string('image_path')->nullable();
+                $table->timestamps();
 
-    /**
-     * Reverse the migrations.
-     */
-    public function down(): void
-    {
-        Schema::dropIfExists('posts');
-    }
-};
+                // Clés étrangères
+                $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+                $table->foreign('sport_id')->references('id')->on('sports')->onDelete('set null');
+            });
+        } else {
+            // La table posts existe déjà : on ajoute seulement sport_id s'il n'existe pas
+            if (!Schema::hasColumn('posts', 'sport_id')) {
+                Schema::table('posts', function (Blueprint $table) {
+                    $table->unsignedBigInteger('sport_id')->nullable()->after('user_id');
+
+                    $table->foreign('sport_id')->references('id')->on('sports')->onDelete('set null');
+                });
+            }
+        }
+    }}
+

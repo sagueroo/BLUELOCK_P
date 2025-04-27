@@ -164,3 +164,24 @@ body {
     border-radius: 5px;
     border: none;
 }
+
+
+ .tab-button {
+     background: none;
+     border: none;
+     padding: 10px;
+     font-weight: bold;
+     cursor: pointer;
+     font-size: 16px;
+ }
+.tab-button.active {
+    border-bottom: 2px solid black;
+}
+.tab-section {
+    margin-top: 20px;
+}
+.club-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

@@ -1,0 +1,163 @@
+/* public/css/clubs/show.css */
+
+.team-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+}
+
+.team-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.team-name {
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+.team-info {
+    font-size: 1rem;
+    color: #777;
+    margin-top: 0.5rem;
+}
+
+.jersey-row {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.jersey-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 240px;
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.jersey-card.locked {
+    opacity: 0.6;
+    position: relative;
+    overflow: hidden;
+    filter: grayscale(100%);
+    cursor: not-allowed;
+}
+
+.jersey-card.locked::after {
+    content: "🔒";
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 1.5rem;
+    color: #999;
+}
+
+.jersey-card.placeholder img {
+    filter: grayscale(100%) brightness(80%);
+    opacity: 0.7;
+}
+
+
+
+.jersey-label {
+    margin-top: 0.5rem;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.fanart-section {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.fanart-img {
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.desc-section {
+    background: #f9f9f9;
+    padding: 1rem;
+    border-radius: 10px;
+    line-height: 1.6;
+    font-size: 0.95rem;
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.toggle-desc {
+    display: inline-block;
+    margin-top: 1rem;
+    font-weight: bold;
+    color: #2563eb;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.toggle-desc:hover {
+    color: #1d4ed8;
+}
+
+.members-title {
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 0.5rem;
+}
+
+.members-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1rem;
+    list-style: none;
+    padding: 0;
+}
+
+.member-card {
+    text-align: center;
+    background: #f3f4f6;
+    padding: 1rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    transition: transform 0.2s;
+}
+
+.member-card:hover {
+    transform: translateY(-3px);
+}
+
+.member-pic {
+    width: 60px;
+    height: 60px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 50%;
+    margin: 0 auto 0.5rem;
+}
+
+.see-more {
+    display: inline-block;
+    margin-top: 0.5rem;
+    font-weight: 500;
+    color: #2563eb;
+    text-decoration: underline;
+}
+
+.see-more:hover {
+    color: #1d4ed8;
+    text-decoration: none;
+}
