@@ -16,3 +16,11 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 });
+
+document.getElementById('addEventBtn').addEventListener('click', function() {
+    document.getElementById('createEventPopup').style.display = 'flex';
+});
+
+document.getElementById('cancelEventBtn').addEventListener('click', function() {
+    document.getElementById('createEventPopup').style.display = 'none';
+});

@@ -11,9 +11,8 @@
             <button class="user-row {{ $index % 2 == 0 ? 'even' : 'odd' }}"
                     onclick="confirmRemoval('{{ $user->id }}', '{{ $user->name }}')">
                 {{-- By ChatGPT for the if with ? --}}
-                <img src="{{ $user->profile_photo_url ?? asset('images/default-profile.png') }}"
-                     alt="PP de {{ $user->name }}" class="profile-pic">
-                <span class="user-info">{{ $user->name }} - {{ $user->email }}</span>
+                <img src="{{ $user->profile_photo_path ? asset('storage/' . $user->profile_photo_path) : asset('images/default-profile.png') }}" alt="{{ $user->name }}" class="profile-pic">
+                <span class="user-info">{{ $user->name }}</span>
             </button>
         @endforeach
     </div>

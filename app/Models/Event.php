@@ -41,8 +41,9 @@ class Event extends Model
     public function toSearchableArray()
     {
         return [
-            'title' => $this->title
-            // Add other searchable attributes
+            'title' => $this->title,
+            'date' => $this->date,
+            'location' => $this->location
         ];
     }
 

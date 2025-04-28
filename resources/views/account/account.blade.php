@@ -1,7 +1,8 @@
 <x-app-layout>
     <link rel="stylesheet" href="{{ asset('css/account/account.css') }}">
+
     <div class="header">
-        <div class="profile-pic" style="background-image: url('{{ Auth::user()->profile_photo_path ? asset('storage/' . Auth::user()->profile_photo_path) : asset('pictures/pop.png') }}');"></div>
+            <div class="profile-pic" style="background-image: url('{{ Auth::user()->profile_photo_path ? asset('storage/' . Auth::user()->profile_photo_path) : asset('pictures/pop.png') }}');"></div>
         <div class="user-info">
             <div class="user-header">
                 <h2>{{ Auth::user()->name }}</h2>
@@ -51,7 +52,7 @@
         @endforeach
     </div>
 
-    <!-- Modal de suppression de post -->
+{{--    Popup delete post--}}
     <div id="confirmPostModal" class="modal">
         <div class="modal-content">
             <p id="modalPostText">Do you really want to delete this post? ?</p>

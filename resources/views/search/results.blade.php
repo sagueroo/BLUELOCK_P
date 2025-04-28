@@ -14,7 +14,7 @@ posts, events, sports), cela reste du copier / coller d'où le faite que la page
                     <a href="{{ route('account.show', ['id' => $user->id]) }}">
                     <div class="user-row {{ $index % 2 === 0 ? 'even' : 'odd' }}">
                         <img src="{{ $user->profile_photo_path ? asset('storage/' . $user->profile_photo_path) : asset('images/default-profile.png') }}" alt="{{ $user->name }}" class="profile-pic">
-                        <span class="user-info">{{ $user->name }} - {{ $user->email }}</span>
+                        <span class="user-info">{{ $user->name }}</span>
                     </div>
                     </a>
                 @empty

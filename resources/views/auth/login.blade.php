@@ -9,7 +9,13 @@
         <h2>The future is yours</h2>
         <a href="/register"><h1>Join us</h1></a>
         <p class="instructions">Sign up now.</p>
-        <x-social-button type="google" id="google-link"><a href="{{ route('auth.google') }}">Google <img src="{{ asset('pictures/google.png') }}" alt="Logo Google"> </a></x-social-button>
+        <x-social-button type="google" id="google-link">
+            <a href="{{ route('auth.google') }}" class="social-content">
+                <img src="{{ asset('pictures/googleicon.png') }}" alt="Logo Google" width="30" height="30">
+                <span>Google</span>
+            </a>
+        </x-social-button>
+
 
         <div class="divider">
             <hr><span>or</span><hr>
@@ -35,17 +41,18 @@
 </x-guest-layout>
 <style>
     .google-btn {
-        border:3px solid #db4437;
-        background-color: #fff;
-        color : #db4437;
+        background-color: #db4437;
+        color : white;
     }
-    #google-link {
+
+    .social-content {
         display: flex;
         align-items: center;
-        gap: 8px; /* espace entre logo et texte */
+        gap: 8px;
         text-decoration: none;
         color: inherit;
     }
+
 </style>
 <script src="{{ asset('js/auth/login.js') }}"></script>
 
