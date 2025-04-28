@@ -73,6 +73,11 @@ class User extends Authenticatable
         return $this->belongsToMany(User::class, 'followers', 'follower_id', 'following_id');
     }
 
+    public function club()
+    {
+        return $this->belongsTo(Club::class);
+    }
+
     public function toSearchableArray()
     {
         return [

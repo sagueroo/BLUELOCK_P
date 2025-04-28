@@ -18,7 +18,7 @@
             </a>
         </li>
         <li>
-            <a href="#blueteam" class="menu-item">
+            <a href="{{ route('blueteam') }}" class="menu-item">
                 <img src="{{ asset('pictures/team.png') }}" alt="Team"> <span>BlueTeam</span>
             </a>
         </li>

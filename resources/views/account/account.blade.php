@@ -35,11 +35,13 @@
 
     <!-- Navigation -->
     <div class="navigation">
-        <a href="#">Posts</a>
-        <a href="#">Team</a>
+        <button id="btn-posts" class="tab-button active">Publications</button>
+        <button id="btn-club" class="tab-button">Club</button>
     </div>
 
+    <div class="content">
     <!-- Publications -->
+    <div id="posts-section" class="tab-section">
     <div class="gallery">
         @foreach($posts as $post)
             <div class="post" onclick="confirmDeletePost({{ $post->id }})">
@@ -50,6 +52,18 @@
                 @endif
             </div>
         @endforeach
+    </div>
+    </div>
+    <div id="club-section" class="tab-section" style="display: none;">
+        @if(Auth::user()->club)
+            <div class="club-info">
+                <img src="{{ Auth::user()->club->badge ?? asset('pictures/pop.png') }}" alt="Badge du club" style="width: 100px; height: 100px;">
+                <p style="margin-top: 10px;">{{ Auth::user()->club->name }}</p>
+            </div>
+        @else
+            <p style="text-align: center; margin-top: 1rem;">Aucun club actuellement</p>
+        @endif
+    </div>
     </div>
 
 {{--    Popup delete post--}}
@@ -68,5 +82,24 @@
 
     <script src="{{ asset('js/account/account.js') }}"></script>
 </x-app-layout>
+<script>
 
+        const btnPosts = document.getElementById('btn-posts');
+        const btnClub = document.getElementById('btn-club');
+        const postsSection = document.getElementById('posts-section');
+        const clubSection = document.getElementById('club-section');
 
+        btnPosts.addEventListener('click', () => {
+        postsSection.style.display = 'block';
+        clubSection.style.display = 'none';
+        btnPosts.classList.add('active');
+        btnClub.classList.remove('active');
+    });
+
+        btnClub.addEventListener('click', () => {
+        postsSection.style.display = 'none';
+        clubSection.style.display = 'block';
+        btnClub.classList.add('active');
+        btnPosts.classList.remove('active');
+    });
+</script>
