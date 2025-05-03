@@ -1,0 +1,41 @@
+/* Container principal */
+.result {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+/* Section Recherche */
+.search-section {
+    margin-bottom: 1rem;
+}
+
+/* Titre de chaque section */
+.section-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+}
+
+/* Résultats */
+.results {
+    margin-bottom: 0.75rem;
+    padding-left: 1rem;
+}
+
+/* Aucune donnée trouvée */
+.no-results {
+    font-size: 1rem;
+    color: #a0aec0;
+}
+
+/* Séparateur fin (trait gris) */
+.separator {
+    width: 100%;
+    border-top: 1px solid #e2e8f0;
+    margin-top: 0.5rem;
+    margin-bottom: 1.5rem;
+}

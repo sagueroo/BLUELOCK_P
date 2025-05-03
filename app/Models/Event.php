@@ -32,7 +32,7 @@ class Event extends Model
         return $this->belongsTo(User::class);
     }
 
-    // Dans le modèle Event
+
     public function users()
     {
         return $this->belongsToMany(User::class, 'events_users');

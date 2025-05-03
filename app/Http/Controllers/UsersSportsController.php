@@ -11,11 +11,9 @@ class UsersSportsController
     {
         $user = Auth::user();
         $sport = Sport::find($request->sport_id);
-
-        // Ajouter le sport à l'utilisateur
         $user->sports()->attach($sport);
 
-        return back()->with('success', 'Sport ajouté avec succès !');
+        return back()->with('success', 'Sport added successfully !');
     }
 
     public function deleteSport(Request $request)
@@ -24,16 +22,13 @@ class UsersSportsController
         $sport = Sport::find($request->sport_id);
 
         if ($sport) {
-            // Supprimer tous les posts de l'utilisateur liés à ce sport
+            // Delete all posts of the user linked with this sport
             $user->posts()->where('sport_id', $sport->id)->delete();
-
-            // Détacher le sport
             $user->sports()->detach($sport->id);
 
-            return back()->with('success', 'Sport et posts associés retirés avec succès !');
+            return back()->with('success', 'Sport and posts delete successfully !');
         }
-
-        return back()->with('error', 'Sport non trouvé.');
+        return back()->with('error', 'Sport not found');
     }
 
 

@@ -5,7 +5,7 @@
 
     <div class="team-container">
 
-        <!-- Titre -->
+        <!-- Title -->
         <div class="team-header">
             <h1 class="team-name">{{ $team['strTeam'] }}</h1>
             <p class="team-info">
@@ -16,7 +16,7 @@
         </div>
 
         <div class="jersey-row">
-            <!-- Maillot 1 : verrouillé -->
+            <!-- Maillot 1 : locked -->
             <div class="jersey-card locked">
                 <img src="{{ asset('pictures/placeholder-shirt.png') }}" alt="Maillot à venir" class="jersey-img">
                 <p class="jersey-label">Soon...</p>
@@ -28,7 +28,7 @@
                 <p class="jersey-label">Home</p>
             </div>
 
-            <!-- Maillot 1 : verrouillé -->
+            <!-- Maillot 1 : locked -->
             <div class="jersey-card locked">
                 <img src="{{ asset('pictures/placeholder-shirt.png') }}" alt="Maillot à venir" class="jersey-img">
                 <p class="jersey-label">Soon...</p>
@@ -65,7 +65,7 @@
             </div>
         @endif
 
-        <!-- Membres -->
+        <!-- Members -->
         @if ($club && $club->users && $club->users->count() > 0)
             <h2 class="members-title">Membres du club</h2>
             <ul class="members-list">
@@ -82,7 +82,7 @@
             </ul>
 
             @if ($club->users->count() > 3)
-                <a href="{{ route('clubs.members', $club->id) }}" class="see-more">Voir tous les membres</a>
+                <a href="{{ route('clubs.members', $club->id) }}" class="see-more">Show all the members</a>
             @endif
         @endif
 

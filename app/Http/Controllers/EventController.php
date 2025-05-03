@@ -13,19 +13,18 @@ class EventController
     {
         $user = auth()->user();
 
-        // Récupère les sports auxquels l'utilisateur est inscrit
+        // Retrieves sports in which the user is registered
         $sportsSubscribed = $user->sports;
 
-        // Récupère les événements associés à ces sports et charge les relations sport et user
+        // Retrieves events associated with these sports and handles sport and user relations
         $events = Event::with('sport', 'user')
         ->whereIn('sport_id', $sportsSubscribed->pluck('id'))
         ->get();
 
-        // Calcul du nombre de places restantes pour chaque événement
+        // Calculation of the number of places remaining for each event
         foreach ($events as $event) {
             $event->place_prises = $event->users->count();
         }
-
         return view('blueevent', compact('events', 'sportsSubscribed'));
     }
 
@@ -35,24 +34,24 @@ class EventController
         $user = auth()->user();
 
         if (!$user) {
-            return back()->with('error', 'Vous devez être connecté pour rejoindre un événement.');
+            return back()->with('error', 'You need to are connected to join event!');
         }
 
-        // Vérifier si l'utilisateur est déjà inscrit
+        // Check if the user is already registered
         if ($event->users()->where('user_id', $user->id)->exists()) {
-            return back()->with('error', 'Vous êtes déjà inscrit à cet événement.');
+            return back()->with('error', 'You are already a member of this event!');
         }
 
-        // Vérifier s'il reste des places
-        $placesRestantes = $event->max_participants - $event->users()->count(); //On prend le max et on soustrait au nb d'inscrit trouvé dans la table
-        if ($placesRestantes <= 0) {
-            return back()->with('error', 'Plus de places disponibles pour cet événement.');
+        // Check if there are still places available
+        $restingPlaces = $event->max_participants - $event->users()->count();
+        if ($restingPlaces <= 0) {
+            return back()->with('error', 'More places available for this event.');
         }
 
-        // Inscrire l'utilisateur
+        // Register the user
         $event->users()->attach($user->id);
 
-        return back()->with('success', 'Vous avez rejoint l événement avec succès.');
+        return back()->with('success', 'You have join the event successfully!');
     }
 
     public function leaveEvent(Event $event)
@@ -73,28 +72,23 @@ class EventController
     {
         $user = Auth::user();
 
-        // Récupérer les événements créés par l'user connecté
+        // Retrieve all the event created by the user connected
         $events = Event::where('user_id', $user->id)->get();
 
-        // Retourner la vue avec les événements
         return view('myEvent', compact('events'));
     }
 
     public function viewMore(Event $event)
     {
-        // Récupérer les utilisateurs inscrits à cet événement via la relation définie dans le modèle
+        // Retrieve all the user registered to the event
         $users = $event->users;
-
-        // Retourner la vue avec les utilisateurs inscrits
         return view('viewMore', compact('event', 'users'));
     }
 
     public function removeUser(Event $event, User $user)
     {
-        //Enleve l'entrée de l'user avec l'event
         $event->users()->detach($user->id);
-
-        return back()->with('success', "L'utilisateur a été supprimé de l'événement.");
+        return back()->with('success', "The user was delete to the event successfully!");
     }
 
     public function addEvent(Request $request)

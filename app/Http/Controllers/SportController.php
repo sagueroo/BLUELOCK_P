@@ -19,10 +19,9 @@ class SportController extends Controller
             }
         } else {
             foreach ($sports as $sport) {
-                $sport->isRegistered = false; // Par défaut, non inscrit si l'utilisateur est déconnecté
+                $sport->isRegistered = false;
             }
         }
-
         return view('bluesport', compact('sports'));
     }
 

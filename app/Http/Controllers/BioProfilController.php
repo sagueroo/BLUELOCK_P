@@ -17,7 +17,7 @@ class BioProfilController extends Controller
         $user->bio = $request->bio;
         $user->save();
 
-        return redirect()->route('account.show')->with('success', 'Votre bio a été mise à jour avec succès !');
+        return redirect()->route('account.show')->with('success', 'Your bio has been successfully updated!');
     }
 
 }

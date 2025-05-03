@@ -6,20 +6,17 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Carbon\Carbon; // Ajoute Carbon pour gérer les dates
 
-//Cette classe a été réalisé avec l'aide d'élèves en RA, de ChatGPT ainsi que de la doc officielle de l'API : https://docs.football-data.org/general/v4/resources.html
+//This class was created with the help of RA students, ChatGPT and the official API doc: https://docs.football-data.org/general/v4/resources.html
 class ResultController
 {
     private $API_KEY = "8eaacd5855b24ed7912efae86b06cb3c";
 
     public function index(Request $request)
     {
-        $selectedLeague = $request->query('league', 'FL1'); // Premier League par défaut
+        $selectedLeague = $request->query('league', 'FL1'); // Premier League default
 
-        // Récupérer les matchs récents (filtrés sur les 7 derniers jours)
+        //Retrieve recent matches (filtered over the last 7 days)
         $recentMatches = $this->getRecentMatches($selectedLeague);
-
-
-
         return view('blueresult', compact('recentMatches', 'selectedLeague'));
     }
 
@@ -37,14 +34,13 @@ class ResultController
 
         $matches = $response->json()['matches'] ?? [];
 
-        // Filtrer les matchs des 7 derniers jours
-        $sevenDaysAgo = Carbon::now()->subDays(5); // Date d'il y a 7 jours
+        // Filter matches over the last 7 days
+        $sevenDaysAgo = Carbon::now()->subDays(5); // 7 days ago
 
         $filteredMatches = array_filter($matches, function ($match) use ($sevenDaysAgo) {
             $matchDate = Carbon::parse($match['utcDate']);
             return $matchDate->greaterThanOrEqualTo($sevenDaysAgo);
         });
-
         return array_values($filteredMatches);
     }
 
@@ -59,7 +55,6 @@ class ResultController
         if ($response->failed()) {
             return [];
         }
-
         return $response->json()['matches'] ?? [];
     }
 }

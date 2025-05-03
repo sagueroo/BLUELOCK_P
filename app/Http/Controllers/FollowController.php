@@ -12,7 +12,7 @@ class FollowController extends Controller
     {
         $authUser = auth()->user();
 
-        if ($authUser->id !== $user->id) { // Empêcher de se suivre soi-même
+        if ($authUser->id !== $user->id) { // Preventing you from following yourself
             $authUser->following()->toggle($user->id);
         }
 

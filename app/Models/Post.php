@@ -18,7 +18,6 @@ class Post extends Model
         'image_path',
     ];
 
-    // Relation avec l'utilisateur
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id');
@@ -28,7 +27,6 @@ class Post extends Model
     {
         return [
             'content' => $this->content
-            // Add other searchable attributes
         ];
     }
 }

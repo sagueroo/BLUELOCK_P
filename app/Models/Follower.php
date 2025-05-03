@@ -9,8 +9,7 @@ class Follower extends Model
 {
     use HasFactory;
     protected $fillable = ['follower_id', 'following_id'];
-    protected $table = 'followers'; // Nom de la table dans la base de données
-
+    protected $table = 'followers';
 
 
 }

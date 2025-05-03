@@ -31,29 +31,28 @@ class PostController extends Controller
 
         ]);
 
-        return redirect()->back()->with('success', 'Post créé avec succès !');
+        return redirect()->back()->with('success', 'Post created successfully !');
     }
 
     public function index()
     {
-        //Récupère tout les posts
+        // Retrieve all posts
         $posts = Post::with('user')->orderBy('created_at', 'desc')->get();
         return view('dashboard', compact('posts'));
     }
 
     public function deletePost(Post $post)
     {
-        // On vérifie que le post appartient bien à l'utilisateur connecté
+        // Check that the post belongs to the logged-in user
         if ($post->user_id !== auth()->id()) {
             return back()->with('error', 'Action non autorisée.');
         }
 
-        // TODO On supprime l'image si elle existe
+        // TODO Delete image if exist
 
 
         $post->delete();
-
-        return back()->with('success', 'Le post a été supprimé avec succès.');
+        return back()->with('success', 'Post delete successfully.');
     }
 
 }

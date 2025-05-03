@@ -21,11 +21,11 @@ class AdminController extends Controller
     public function deletePost(Post $post)
     {
         $post->delete();
-        return view('admin.dashboard')->with('success', 'Post supprimé avec succès.');
+        return view('admin.dashboard')->with('success', 'Post deleted successfully');
     }
     public function deleteEvent(Event $event) {
         $event->delete();
-        return view('admin.dashboard')->with('success', 'Événement supprimé avec succès.');
+        return view('admin.dashboard')->with('success', 'Event deleted successfully');
     }
 
     public function deleteUser(User $user)
@@ -33,8 +33,7 @@ class AdminController extends Controller
         $user->events()->delete();
         $user->posts()->delete();
         $user->delete();
-
-        return view('admin.dashboard')->with('success', 'Utilisateur supprimé avec succès.');
+        return view('admin.dashboard')->with('success', 'User deleted successfully');
     }
 
 }

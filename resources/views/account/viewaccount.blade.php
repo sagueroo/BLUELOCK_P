@@ -9,20 +9,17 @@
                 <h2>{{ $user->name }}</h2>
 
                 @php
-                    // Check if the authenticated user is following the displayed user
                     $isFollowing = \App\Models\Follower::where('follower_id', auth()->id())
                                                        ->where('following_id', $user->id)
                                                        ->exists();
                 @endphp
 
                 @if($isFollowing)
-                    <!-- Unfollow button -->
                     <form action="{{ route('account.unfollow', ['id' => $user->id]) }}" method="POST">
                         @csrf
                         <button type="submit" class="btn-follow active">Unfollow</button>
                     </form>
                 @else
-                    <!-- Follow button -->
                     <form action="{{ route('account.follow', ['id' => $user->id]) }}" method="POST">
                         @csrf
                         <button type="submit" class="btn-follow">Follow</button>
@@ -31,7 +28,6 @@
             </div>
 
             <div class="stats">
-                <!-- User stats: posts, followers, following -->
                 <div>
                     <strong>{{ $postsCount }}</strong>
                     <p>Posts</p>
@@ -50,23 +46,40 @@
         </div>
     </div>
 
-    <!-- Navigation links -->
+    <!-- Navigation -->
     <div class="navigation">
-        <a href="#">Posts</a>
-        <a href="#">Teams</a>
+        <button id="btn-posts" class="tab-button active">Posts</button>
+        <button id="btn-club" class="tab-button">Club</button>
     </div>
 
-    <!-- User's posts gallery -->
-    <div class="gallery">
-        @foreach($posts as $post)
-            <div class="post">
-                @if($post->image_path)
-                    <img src="{{ asset('storage/' . $post->image_path) }}" alt="Post image" class="post-image">
-                @else
-                    <p>{{ $post->content }}</p>
-                @endif
+    <div class="content">
+        <!-- Posts -->
+        <div id="posts-section" class="tab-section">
+            <div class="gallery">
+                @foreach($posts as $post)
+                    <div class="post">
+                        @if($post->image_path)
+                            <img src="{{ asset('storage/' . $post->image_path) }}" alt="Post image" class="post-image">
+                        @else
+                            <p>{{ $post->content }}</p>
+                        @endif
+                    </div>
+                @endforeach
             </div>
-        @endforeach
+        </div>
+
+        <!-- Club -->
+        <div id="club-section" class="tab-section" style="display: none;">
+            @if($user->club)
+                <div class="club-info">
+                    <img src="{{ $user->club->badge ?? asset('pictures/pop.png') }}" alt="Club badge" style="width: 100px; height: 100px;">
+                    <p style="margin-top: 10px;">{{ $user->club->name }}</p>
+                </div>
+            @else
+                <p style="text-align: center; margin-top: 1rem;">No club at the moment</p>
+            @endif
+        </div>
     </div>
+
+    <script src="{{ asset('js/account/account.js') }}"></script>
 </x-app-layout>
-{{--DO--}}

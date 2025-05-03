@@ -6,7 +6,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Follower;
 use App\Models\Post;
-use App\Models\Sport; // Assure-toi d'importer le modèle Sport
+use App\Models\Sport;
 
 class AccountController extends Controller
 {
@@ -15,25 +15,25 @@ class AccountController extends Controller
         if (!Auth::check()) {
             return redirect()->route('login');
         }
-        // Vérifier si un ID est fourni, sinon afficher le profil de l'utilisateur connecté
+        // Check if an ID is provided, otherwise display the profile of the logged-in user
         $user = $id ? User::findOrFail($id) : Auth::user();
 
-        // Vérifier si l'utilisateur connecté est en train de voir son propre profil
+        // Check whether the logged-in user is viewing his own profile
         $isOwnProfile = (Auth::id() == $user->id);
 
-        // Récupérer ces follows et ces posts
+        // Retrieve all posts and followers of the user connected
         $followersCount = Follower::where('following_id', $user->id)->count();
         $followingCount = Follower::where('follower_id', $user->id)->count();
         $postsCount = Post::where('user_id', $user->id)->count();
         $posts = Post::where('user_id', $user->id)->orderBy('created_at', 'desc')->get();
 
 
-        // Afficher account.blade.php si c'est le profil de l'utilisateur connecté
+        // Show account.blade.php if the user is the user connected
         if ($isOwnProfile) {
             return view('account.account', compact('user', 'isOwnProfile', 'followersCount', 'followingCount', 'postsCount', 'posts'));
         }
 
-        // Sinon, afficher viewprofile.blade.php pour un autre utilisateur
+        // Else, show viewprofile.blade.php for a other user
         return view('account.viewaccount', compact('user', 'isOwnProfile', 'followersCount', 'followingCount', 'postsCount', 'posts'));
     }
 
@@ -42,20 +42,20 @@ class AccountController extends Controller
         $currentUser = Auth::user();
         $userToFollow = User::findOrFail($id);
 
-        // Vérifier si l'utilisateur n'est pas déjà suivi
+        // Check if the user is not already subscribed
         $alreadyFollowing = Follower::where('follower_id', $currentUser->id)
             ->where('following_id', $userToFollow->id)
             ->exists();
 
         if (!$alreadyFollowing) {
-            // Ajouter dans la table followers
+            // Add in the table
             Follower::create([
                 'follower_id' => $currentUser->id,
                 'following_id' => $userToFollow->id,
             ]);
         }
 
-        return redirect()->back()->with('success', 'Vous suivez maintenant ' . $userToFollow->name);
+        return redirect()->back()->with('success', 'You follow now' . $userToFollow->name);
     }
 
     public function unfollow($id)
@@ -63,12 +63,12 @@ class AccountController extends Controller
         $currentUser = Auth::user();
         $userToUnfollow = User::findOrFail($id);
 
-        // Supprimer l'entrée de la table followers
+        // Delete in the table
         Follower::where('follower_id', $currentUser->id)
             ->where('following_id', $userToUnfollow->id)
             ->delete();
 
-        return redirect()->back()->with('success', 'Vous ne suivez plus ' . $userToUnfollow->name);
+        return redirect()->back()->with('success', 'You dont follow now' . $userToUnfollow->name);
     }
 
 

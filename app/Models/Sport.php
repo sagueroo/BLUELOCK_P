@@ -23,7 +23,6 @@ class Sport extends Model
     {
         return [
             'name' => $this->name
-            // Add other searchable attributes
         ];
     }
 

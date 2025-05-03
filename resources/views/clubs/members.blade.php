@@ -2,7 +2,7 @@
     <link rel="stylesheet" href="{{ asset('css/clubs/members.css') }}">
 
     <div class="members-container">
-        <h1 class="club-title">Membres de {{ $club->name }}</h1>
+        <h1 class="club-title">Members of  {{ $club->name }}</h1>
         <p class="member-count">{{ $club->users->count() }} membres</p>
 
         <ul class="member-list">

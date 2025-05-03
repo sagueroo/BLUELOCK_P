@@ -16,23 +16,22 @@ class SearchController extends Controller
         $user = $user = Auth::user();
         $query = $request->input('q');
 
-        // Utilise Scout pour chercher
+        // Use Scout to find anything
         $events = Event::search($query)->get();
         $posts = Post::search($query)->get();
         $users = User::search($query)->get();
         $sports = Sport::search($query)->get();
 
-        //Repris du controller SportController (permettant de savoir un l'user est déjà enregistré dans le sport pour le bouton)
+        //To know if the user is already registered with the sport (if the research find a sport)
         if ($user) {
             foreach ($sports as $sport) {
                 $sport->isRegistered = $user->sports->contains('id', $sport->id);
             }
         } else {
             foreach ($sports as $sport) {
-                $sport->isRegistered = false; // Par défaut, non inscrit si l'utilisateur est déconnecté
+                $sport->isRegistered = false;
             }
         }
-
         return view('search.results', compact('events', 'query', 'posts', 'users', 'sports'));
     }
 }

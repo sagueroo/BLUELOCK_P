@@ -5,11 +5,12 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use App\Models\Club;
 
+//This class was created with the help of RA students, ChatGPT and the official API doc: https://docs.football-data.org/general/v4/resources.html
 class TeamController extends Controller
 {
     public function index(Request $request)
     {
-        // Liste fixe de sports et leurs ligues associées
+        // Fixed list of sports and their associated leagues
         $sports = [
             'Soccer' => [
                 'English Premier League',
@@ -29,26 +30,25 @@ class TeamController extends Controller
             ],
         ];
 
-        // Récupération du sport sélectionné
+        // Retrieves sport selected
         $selectedSport = $request->query('sport', 'Soccer');
 
-        // Récupération des ligues pour le sport sélectionné
+        // Retrieves leagues of the sport
         $leagues = $sports[$selectedSport] ?? [];
 
-        // Récupération de la ligue sélectionnée
+        // Retrieve league selected
         $selectedLeague = $request->query('league', $leagues[0] ?? null);
 
-        // Récupération des équipes pour la ligue sélectionnée
+        // Retrieve team of the league selected
         $teams = [];
         if ($selectedLeague) {
             $response = Http::get('https://www.thesportsdb.com/api/v1/json/3/search_all_teams.php', [
                 'l' => $selectedLeague
             ]);
-
             $teams = $response->json()['teams'] ?? [];
         }
 
-        // Envoi des données à la vue
+        // Send data to the view
         return view('blueteam', [
             'sports' => array_keys($sports),
             'selectedSport' => $selectedSport,
@@ -64,11 +64,9 @@ class TeamController extends Controller
         $team = json_decode(base64_decode($teamEncoded), true);
 
         if (!$team) {
-            return abort(400, 'Équipe invalide ou non envoyée');
+            return abort(400, 'Team invalid or not sent');
         }
-
         $club = Club::with('users')->where('api_id', $team['idTeam'])->first();
-
         return view('teams.show', compact('team', 'club'));
     }
     public function showChallenges()
