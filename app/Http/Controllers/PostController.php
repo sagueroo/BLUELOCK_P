@@ -31,7 +31,7 @@ class PostController extends Controller
 
         ]);
 
-        return redirect()->back()->with('success', 'Post created successfully !');
+        return redirect()->back()->with('success', 'Post created successfully.');
     }
 
     public function index()
