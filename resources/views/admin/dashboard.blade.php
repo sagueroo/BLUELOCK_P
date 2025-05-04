@@ -17,7 +17,7 @@
                 @foreach($posts as $post)
                     <div class="card admin-item">
                         <div class="card-header">
-                            <img src="{{ $post->user->profile_photo_url }}" alt="Photo de profil">
+                            <img src="{{ $post->user->profile_photo_path ? (\Illuminate\Support\Str::startsWith($post->user->profile_photo_path, 'http') ? $post->user->profile_photo_path : asset('storage/' . $post->user->profile_photo_path)) : asset('pictures/pop.png') }}" >
                             <div>
                                 <strong>{{ $post->user->name }}</strong>
                                 <div class="timestamp">{{ $post->created_at->diffForHumans() }}</div>
@@ -43,7 +43,7 @@
                 @foreach($users as $user)
                     <div class="card admin-item">
                         <div class="card-header">
-                            <img src="{{ $user->profile_photo_url }}" alt="Photo de profil">
+                            <img src="{{ $user->profile_photo_path ? asset('storage/' . $user->profile_photo_path) : asset('images/default-profile.png') }}" alt="{{ $user->name }}" >
                             <div>
                                 <strong>{{ $user->name }}</strong>
                                 <div class="timestamp">{{ $user->email }}</div>
