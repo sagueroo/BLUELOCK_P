@@ -209,6 +209,10 @@ And now... **Launch the project with `php artisan serve`** and enjoy the **BlueL
 
 Right now, it's just placeholder content 😅 — but it’s on the roadmap.
 
+🔜 We did not implement the daily reporting feature (CSV export with task scheduling and job execution). After some research, we found that our project does not include the Console directory (and therefore no Kernel.php), which is required to schedule jobs in Laravel.
+
+Since we started working on this feature late in the project, we decided not to create the missing files manually to avoid risking breaking the project at the very end of development.
+
 Thanks for reading our README!
 
 ---
