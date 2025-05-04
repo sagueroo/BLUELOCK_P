@@ -1,66 +1,222 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+![BLUELOCK](https://www.dafont.com/forum/attach/orig/1/1/1113252.png?1 "BLUELOCK LOGO")
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+# BlueLock - The Ultimate Sports Social Network 🏆
 
-## About Laravel
+Welcome to **BlueLock**, the 100% sports social network created by **Mèjdi Alaoui**, **Mohamed Benteboula**, and **Riad Rhoulam**!
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Imagine a platform made *just* for sports enthusiasts like you:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+👉 Live match results
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+👉 A community of fans
 
-## Learning Laravel
+👉 Create or join events
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+👉 Represent your favorite clubs
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+👉 Personalize your profile...
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Basically, everything you need to fully enjoy your passion for sports!
 
-## Laravel Sponsors
+---
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+## 🚀 Main Features
 
-### Premium Partners
+- **Live Match Results**
+    
+    Stay up to date with the latest football match scores *directly in the app* (currently football only, but don’t worry — more sports are on the way 😉).
+    
+- **Community Feed**
+    
+    Post, comment, share your thoughts about matches, events, clubs... engage with other fans who are just as hyped as you are!
+    
+- **Event Creation**
+    
+    Organize your own tournaments, training sessions, or sports meetups — and invite everyone to join!
+    
+    You can even see who’s attending your events in real time.
+    
+- **Join a Club**
+    
+    Choose your club from among top pro teams in Europe’s biggest leagues and show off where you play! ⚽
+    
+    (Flex on your friends if you’re in a big club 👀)
+    
+- **Follow System**
+    
+    Follow inspiring players and build your own community.
+    
+- **Customizable Profile**
+    
+    Change your username, bio, or profile picture whenever you like!
+    
+- **Ultra-Fast Full-Text Search**
+    
+    Looking for a nearby event? A hot take on a match?
+    
+    Just type it in the search bar and *BOOM* — instant results!
+    
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+---
 
-## Contributing
+## 🛡️ Moderation Tools
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+To keep things respectful and fun, **admins can**:
 
-## Code of Conduct
+- Delete user accounts
+- Remove posts
+- Delete events
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+(Only if they break the rules, of course 👮‍♂️)
 
-## Security Vulnerabilities
+---
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## 📋 Important Info Before Getting Started
 
-## License
+**Quick tip**: When you first log into BlueLock, head over to the **BlueSport** section to **sign up for your favorite sport(s)**.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+👉 By registering your sports, you’ll unlock the ability to **post**, **create events**, and **see events** related to your interests!
+
+*(PS: The list of available sports will grow based on community requests — feel free to suggest new ones! 😉)*
+
+---
+
+## ⚙️ Tech Stack
+
+This project is built with a full PHP stack:
+
+- **Backend**: PHP 8.2 + Laravel
+- **Frontend**: Blade components, Tailwind (for initial setup), and good ol’ HTML/CSS
+- **Database**: SQLite (simple, fast, and efficient)
+- **API**: Uses an external API to fetch live match scores
+- **OAuth Login**: Google login integration for the lazy legends out there
+
+---
+
+## 🛠️ Behind the Scenes
+
+We followed a classic Laravel architecture:
+
+- **Routes** → lead to **Controllers**
+- **Controllers** → handle all logic (events, signups, posts...)
+- **Views** → display the data in a clean interface
+- **Database** → stores users, events, posts...
+
+Every page is based on the main layout file `app-layout`, which handles the global structure (sidebar, header, background, etc.)
+
+---
+
+## 🧠 Tricky Parts
+
+There weren’t any *super complex* features (thanks Laravel ❤️), but a few things gave us a hard time (and shoutout to AI for the help on these):
+
+- **Google OAuth login** → was a pain to configure initially
+- **Football API** → integrating real-time scores without breaking the app
+- **CSS organization** → we started manually, then used AI to quickly generate consistent styles based on our base design — saved a ton of time (beauty wasn't our top priority)
+
+---
+
+## 📖 Quick Demo
+
+Wanna test the app?
+
+Here you go!
+
+**User Account**:
+
+- ID: [`julien.caposiena@gmail.com`](mailto:julien.caposiena@gmail.com)
+- Password: `j@imelephp8.2!`
+
+**Admin Account**:
+
+- ID: `admin`
+- Password: `admin1234`
+
+*(Yes, it’s not super secure — remember this isn’t a production project 😉)*
+
+---
+
+## 🛠️ Installation Tips
+
+Once you unzip the project, **make sure to install it on a local drive**, not an external one!
+
+⚠️ Otherwise, features like **image uploads** (profile pics, post images, etc.) **won’t work properly**.
+
+### Before launching the project with `php artisan serve`:
+
+There are a few essential setup steps:
+
+---
+
+### 1. SSL Certificate for the API
+
+The score-fetching API requires a **server-side SSL certificate** on your machine.
+
+- **On Windows** (our case):
+    
+    Download `cacert.pem`, place it in your PHP directory (e.g. `C:\Program Files\PHP\php-xxx`)
+    
+    Then, open `php.ini` and set the full path next to `curl.cainfo`.
+    
+- **On Ubuntu** (lucky you):
+    
+    ```bash
+    bash
+    CopierModifier
+    sudo apt-get update
+    sudo apt-get install ca-certificates
+    sudo update-ca-certificates
+    
+    ```
+    
+
+---
+
+### 2. File Handling in the `storage` Folder
+
+Files like post images and profile photos are **not tracked by Git**, because folders like `storage` are in `.gitignore`.
+
+So, after cloning the repo, unzip the extra folder we provided (called **aDezipper**) and copy the following folders into `/storage/app/public`:
+
+- `post`
+- `profile_photos`
+- `reports`
+
+Then (very important for image display!), run:
+
+```bash
+bash
+CopierModifier
+php artisan storage:link
+
+```
+
+---
+
+### 3. Install Dependencies
+
+Once everything above is done, run:
+
+- `composer install`
+- `npm install`
+- `npm run build`
+
+---
+
+And now... **Launch the project with `php artisan serve`** and enjoy the **BlueLock experience** 😍
+
+---
+
+## PS
+
+🔜 The right-hand vertical panel (with trends and suggested profiles) is coming soon!
+
+Right now, it's just placeholder content 😅 — but it’s on the roadmap.
+
+Thanks for reading our README!
+
+---
+
+## *BlueLock – A network made by sports lovers, for sports lovers.*
+
+![Gif Bluelock](https://www.icegif.com/wp-content/uploads/2023/04/icegif-1263.gif "gif bluelock")
