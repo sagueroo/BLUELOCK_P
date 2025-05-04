@@ -161,8 +161,6 @@ The score-fetching API requires a **server-side SSL certificate** on your machin
 - **On Ubuntu** (lucky you):
     
     ```bash
-    bash
-    CopierModifier
     sudo apt-get update
     sudo apt-get install ca-certificates
     sudo update-ca-certificates
@@ -185,8 +183,6 @@ So, after cloning the repo, unzip the extra folder we provided (called **aDezipp
 Then (very important for image display!), run:
 
 ```bash
-bash
-CopierModifier
 php artisan storage:link
 
 ```
