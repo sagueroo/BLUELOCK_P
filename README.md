@@ -116,25 +116,6 @@ There weren’t any *super complex* features (thanks Laravel ❤️), but a few 
 
 ---
 
-## 📖 Quick Demo
-
-Wanna test the app?
-
-Here you go!
-
-**User Account**:
-
-- ID: [`julien.caposiena@gmail.com`](mailto:julien.caposiena@gmail.com)
-- Password: `j@imelephp8.2!`
-
-**Admin Account**:
-
-- ID: `admin`
-- Password: `admin1234`
-
-*(Yes, it’s not super secure — remember this isn’t a production project 😉)*
-
----
 
 ## 🛠️ Installation Tips
 
@@ -170,26 +151,7 @@ The score-fetching API requires a **server-side SSL certificate** on your machin
 
 ---
 
-### 2. File Handling in the `storage` Folder
-
-Files like post images and profile photos are **not tracked by Git**, because folders like `storage` are in `.gitignore`.
-
-So, after cloning the repo, unzip the extra folder we provided (called **aDezipper**) and copy the following folders into `/storage/app/public`:
-
-- `post`
-- `profile_photos`
-- `reports`
-
-Then (very important for image display!), run:
-
-```bash
-php artisan storage:link
-
-```
-
----
-
-### 3. Install Dependencies
+### 2. Install Dependencies
 
 Once everything above is done, run:
 
